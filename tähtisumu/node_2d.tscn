@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://djh74s5x3td0f"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Button" type="Button" parent="."]
+offset_left = 303.0
+offset_top = 174.0
+offset_right = 825.0
+offset_bottom = 448.0
+text = "TERVE
+"
