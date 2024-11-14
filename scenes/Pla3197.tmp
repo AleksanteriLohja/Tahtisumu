@@ -1,16 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://v2gp4f26pspm"]
+[gd_scene load_steps=6 format=3 uid="uid://dsknm4hiaictq"]
 
-[ext_resource type="Texture2D" uid="uid://c5glppls1su8u" path="res://icon.svg" id="1_cts4l"]
-[ext_resource type="Texture2D" uid="uid://dknfmu7cfcb4r" path="res://Grass.png" id="2_u4pq2"]
+[ext_resource type="Script" path="res://scenes/Player.gd" id="1_1lfnk"]
+[ext_resource type="Texture2D" uid="uid://c5glppls1su8u" path="res://icon.svg" id="1_5vc7v"]
+[ext_resource type="Texture2D" uid="uid://dknfmu7cfcb4r" path="res://Grass.png" id="2_vsm84"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oc55o"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_cts4l")
+"texture": ExtResource("1_5vc7v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_u4pq2")
+"texture": ExtResource("2_vsm84")
 }],
 "loop": true,
 "name": &"default",
@@ -21,6 +22,7 @@ animations = [{
 size = Vector2(120, 126)
 
 [node name="player" type="CharacterBody2D"]
+script = ExtResource("1_1lfnk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oc55o")
@@ -29,3 +31,4 @@ frame_progress = 0.942578
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_wg00p")
+disabled = true
