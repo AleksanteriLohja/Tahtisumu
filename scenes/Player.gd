@@ -19,5 +19,7 @@ func _physics_process(_delta):
 
 #Player rotation
 	var mouse = get_local_mouse_position()
-	var angle = snappedf(mouse.angle(), PI / 4) / (PI / 4)
-	angle = wrapi(int(angle), 0, 8) #valitsee animaation hiiren suunnan mukaan
+	var angle = snappedf(mouse.angle(), PI / 2) / (PI / 2)#numeroiden summa on on kulmien määrä 
+	angle = wrapi(int(angle), 0, 4) #valitsee animaation hiiren suunnan mukaan. nyt neljä mutta frameja voi tehdä lisää
+
+	$AnimatedSprite2D.animation = "käännös" + str(angle)

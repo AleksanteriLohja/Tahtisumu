@@ -1,20 +1,43 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsknm4hiaictq"]
+[gd_scene load_steps=8 format=3 uid="uid://dsknm4hiaictq"]
 
 [ext_resource type="Script" path="res://scenes/Player.gd" id="1_1lfnk"]
-[ext_resource type="Texture2D" uid="uid://c5glppls1su8u" path="res://icon.svg" id="1_5vc7v"]
-[ext_resource type="Texture2D" uid="uid://dknfmu7cfcb4r" path="res://Grass.png" id="2_vsm84"]
+[ext_resource type="Texture2D" uid="uid://cmgexkxceukd7" path="res://alus käännös/alus oikea.png" id="2_hiufh"]
+[ext_resource type="Texture2D" uid="uid://bf1i7cjkuoqbj" path="res://alus käännös/alus alas.png" id="3_4shue"]
+[ext_resource type="Texture2D" uid="uid://usj8xjw3n2mk" path="res://alus käännös/alus vasemmalle.png" id="4_vfort"]
+[ext_resource type="Texture2D" uid="uid://bsubkv8scgxdt" path="res://alus käännös/alus ylös.png" id="5_gwgc4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oc55o"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_5vc7v")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_vsm84")
+"texture": ExtResource("2_hiufh")
 }],
 "loop": true,
-"name": &"default",
+"name": &"käännös0",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4shue")
+}],
+"loop": true,
+"name": &"käännös1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_vfort")
+}],
+"loop": true,
+"name": &"käännös2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_gwgc4")
+}],
+"loop": true,
+"name": &"käännös3",
 "speed": 5.0
 }]
 
@@ -25,8 +48,11 @@ size = Vector2(120, 126)
 script = ExtResource("1_1lfnk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.5, 0.999998)
+scale = Vector2(7.4375, 7.625)
 sprite_frames = SubResource("SpriteFrames_oc55o")
-frame_progress = 0.942578
+animation = &"käännös0"
+autoplay = "käännös0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 2)
