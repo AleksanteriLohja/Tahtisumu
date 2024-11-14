@@ -12,7 +12,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("2_hiufh")
 }],
-"loop": true,
+"loop": false,
 "name": &"käännös0",
 "speed": 5.0
 }, {
@@ -42,19 +42,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wg00p"]
-size = Vector2(120, 126)
+size = Vector2(50, 47)
 
 [node name="player" type="CharacterBody2D"]
+position = Vector2(104, 65)
 script = ExtResource("1_1lfnk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-1.5, 0.999998)
-scale = Vector2(7.4375, 7.625)
+position = Vector2(-2, 0.499999)
+scale = Vector2(3.625, 3.5625)
 sprite_frames = SubResource("SpriteFrames_oc55o")
 animation = &"käännös0"
-autoplay = "käännös0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_wg00p")
 disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(1.4, 1.4)

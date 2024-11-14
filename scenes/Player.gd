@@ -1,11 +1,9 @@
 extends CharacterBody2D
 
 var speed: int
-var screen_size : Vector2
+
 func _ready():
-	screen_size = get_viewport_rect().size
-	position = screen_size / 2
-	speed = 200
+	speed = 500
 
 func get_input():
 	# Keyboard input
@@ -17,9 +15,6 @@ func _physics_process(_delta):
 	get_input()
 	move_and_slide()  
 
-#Player rotation
+#Player rotation, tässä oli alunperin toisenlainen koodi mutta tää toimii paremmin
 	var mouse = get_local_mouse_position()
-	var angle = snappedf(mouse.angle(), PI / 2) / (PI / 2)#numeroiden summa on on kulmien määrä 
-	angle = wrapi(int(angle), 0, 4) #valitsee animaation hiiren suunnan mukaan. nyt neljä mutta frameja voi tehdä lisää
-
-	$AnimatedSprite2D.animation = "käännös" + str(angle)
+	look_at(to_global(mouse))
