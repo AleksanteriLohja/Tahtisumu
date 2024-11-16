@@ -1,16 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://dsknm4hiaictq"]
+[gd_scene load_steps=29 format=3 uid="uid://dsknm4hiaictq"]
 
-[ext_resource type="Script" path="res://scenes/Player.gd" id="1_1lfnk"]
-[ext_resource type="Texture2D" uid="uid://cmgexkxceukd7" path="res://alus käännös/alus oikea.png" id="2_hiufh"]
-[ext_resource type="Texture2D" uid="uid://bf1i7cjkuoqbj" path="res://alus käännös/alus alas.png" id="3_4shue"]
-[ext_resource type="Texture2D" uid="uid://usj8xjw3n2mk" path="res://alus käännös/alus vasemmalle.png" id="4_vfort"]
-[ext_resource type="Texture2D" uid="uid://bsubkv8scgxdt" path="res://alus käännös/alus ylös.png" id="5_gwgc4"]
+[ext_resource type="Script" path="res://scenes/Player.gd" id="1_bsu2v"]
+[ext_resource type="Texture2D" uid="uid://cmgexkxceukd7" path="res://alus käännös/alus oikea.png" id="2_b1jqy"]
+[ext_resource type="Texture2D" uid="uid://bf1i7cjkuoqbj" path="res://alus käännös/alus alas.png" id="3_cfuic"]
+[ext_resource type="Texture2D" uid="uid://usj8xjw3n2mk" path="res://alus käännös/alus vasemmalle.png" id="4_qmjbq"]
+[ext_resource type="Texture2D" uid="uid://bsubkv8scgxdt" path="res://alus käännös/alus ylös.png" id="5_cq0i3"]
+[ext_resource type="Texture2D" uid="uid://cd45m23x26tae" path="res://pixelart_starfields/Nairan - Support Ship - Engine.png" id="6_yltfc"]
+[ext_resource type="AudioStream" uid="uid://bcib8ucfchd7l" path="res://alusliike.mp3" id="7_3mb7c"]
+[ext_resource type="AudioStream" uid="uid://ctkh2tmrkmde6" path="res://assets/äänet/shoot.mp3" id="8_3p7t3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oc55o"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_hiufh")
+"texture": ExtResource("2_b1jqy")
 }],
 "loop": false,
 "name": &"käännös0",
@@ -18,7 +21,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_4shue")
+"texture": ExtResource("3_cfuic")
 }],
 "loop": true,
 "name": &"käännös1",
@@ -26,7 +29,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_vfort")
+"texture": ExtResource("4_qmjbq")
 }],
 "loop": true,
 "name": &"käännös2",
@@ -34,7 +37,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_gwgc4")
+"texture": ExtResource("5_cq0i3")
 }],
 "loop": true,
 "name": &"käännös3",
@@ -44,12 +47,141 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wg00p"]
 size = Vector2(50, 47)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqw86"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka7en"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7bvy"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rcg16"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tm4el"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjasy"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pusy"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5drd1"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qg6om"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqw86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ka7en")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7bvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rcg16")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tm4el")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjasy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pusy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5drd1")
+}],
+"loop": true,
+"name": &"MoottoriLiike",
+"speed": 8.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6nbp"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n443m"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ejcm7"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fojic"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqhi6"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4jsc"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_secpy"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_177o8"]
+atlas = ExtResource("6_yltfc")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x8gjf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6nbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n443m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejcm7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fojic")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oqhi6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4jsc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_secpy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_177o8")
+}],
+"loop": true,
+"name": &"MoottoriIdle",
+"speed": 5.0
+}]
+
 [node name="player" type="CharacterBody2D"]
 position = Vector2(104, 65)
-script = ExtResource("1_1lfnk")
+script = ExtResource("1_bsu2v")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="Alus" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2, 0.499999)
+rotation = 3.14159
 scale = Vector2(3.625, 3.5625)
 sprite_frames = SubResource("SpriteFrames_oc55o")
 animation = &"käännös0"
@@ -60,3 +192,36 @@ disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.4, 1.4)
+
+[node name="MoottoriLiike" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(7, -1.43051e-06)
+rotation = 1.5708
+scale = Vector2(1.24115, 2.64423)
+sprite_frames = SubResource("SpriteFrames_qg6om")
+animation = &"MoottoriLiike"
+autoplay = "MoottoriLiike"
+
+[node name="MoottoriIdle" type="AnimatedSprite2D" parent="."]
+position = Vector2(-15, 6.13305e-08)
+rotation = 1.5708
+scale = Vector2(1, 0.956154)
+sprite_frames = SubResource("SpriteFrames_x8gjf")
+animation = &"MoottoriIdle"
+autoplay = "MoottoriIdle"
+
+[node name="AlusMoottoriEteen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_3mb7c")
+pitch_scale = 1.94
+
+[node name="AlusMoottoriTaakse" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_3mb7c")
+pitch_scale = 0.96
+
+[node name="ShotTimer" type="Timer" parent="."]
+wait_time = 0.221
+
+[node name="AlusAmpuminen" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_3p7t3")
+
+[connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]

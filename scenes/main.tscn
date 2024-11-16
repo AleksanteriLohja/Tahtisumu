@@ -1,11 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://2kuiqqfnh7f5"]
+[gd_scene load_steps=7 format=3 uid="uid://2kuiqqfnh7f5"]
 
 [ext_resource type="PackedScene" uid="uid://c2c41fkp61tul" path="res://scenes/world.tscn" id="1_807yc"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_dhvq7"]
 [ext_resource type="PackedScene" uid="uid://dsknm4hiaictq" path="res://scenes/Player.tscn" id="2_wfuc4"]
+[ext_resource type="PackedScene" uid="uid://btelpmnfaft0o" path="res://scenes/enemy_spawner.tscn" id="3_loyku"]
+[ext_resource type="Script" path="res://scenes/bullet_manager.gd" id="4_0ucgg"]
+[ext_resource type="PackedScene" uid="uid://cat0uor30dsu2" path="res://scenes/bullet.tscn" id="5_dcf8m"]
 
-[node name="Main" type="Node"]
+[node name="main" type="Node"]
+script = ExtResource("1_dhvq7")
 
 [node name="TileMapLayer" parent="." instance=ExtResource("1_807yc")]
 
-[node name="Player" parent="." instance=ExtResource("2_wfuc4")]
+[node name="player" parent="." instance=ExtResource("2_wfuc4")]
 position = Vector2(1139, 631)
+
+[node name="BulletManager" type="Node2D" parent="."]
+script = ExtResource("4_0ucgg")
+bullet_scene = ExtResource("5_dcf8m")
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_loyku")]
+position = Vector2(-4, -8)
+
+[connection signal="shoot" from="player" to="BulletManager" method="_on_player_shoot"]
+[connection signal="hit_p" from="EnemySpawner" to="." method="_on_enemy_spawner_hit_p"]
