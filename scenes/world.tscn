@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=4 uid="uid://c2c41fkp61tul"]
 
 [ext_resource type="Texture2D" uid="uid://dknfmu7cfcb4r" path="res://Grass.png" id="1_351fl"]
-[ext_resource type="Texture2D" uid="uid://bf4qw73rha4bo" path="res://pixelart_starfields/pixelart_starfield.png" id="2_kkdtf"]
+[ext_resource type="Texture2D" uid="uid://bf4qw73rha4bo" path="res://assets/grafiikka/pixelart_starfields/pixelart_starfield.png" id="2_kkdtf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8jb41"]
 texture = ExtResource("1_351fl")
