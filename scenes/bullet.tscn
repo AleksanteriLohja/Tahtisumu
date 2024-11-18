@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cat0uor30dsu2"]
 
-[ext_resource type="Texture2D" uid="uid://dd6oplcidq24e" path="res://bullets/All_Fire_Bullet_Pixel_16x16_00.png" id="1_e8b5n"]
+[ext_resource type="Texture2D" uid="uid://dd6oplcidq24e" path="res://assets/grafiikka/bullets/All_Fire_Bullet_Pixel_16x16_00.png" id="1_e8b5n"]
 [ext_resource type="Script" path="res://scenes/bullet.gd" id="1_q7w13"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hwfoy"]
@@ -44,6 +44,8 @@ radius = 5.0
 
 [node name="bullet" type="Area2D"]
 position = Vector2(13, 12)
+collision_layer = 8
+collision_mask = 6
 script = ExtResource("1_q7w13")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

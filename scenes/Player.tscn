@@ -1,12 +1,12 @@
 [gd_scene load_steps=29 format=3 uid="uid://dsknm4hiaictq"]
 
 [ext_resource type="Script" path="res://scenes/Player.gd" id="1_bsu2v"]
-[ext_resource type="Texture2D" uid="uid://cmgexkxceukd7" path="res://alus käännös/alus oikea.png" id="2_b1jqy"]
-[ext_resource type="Texture2D" uid="uid://bf1i7cjkuoqbj" path="res://alus käännös/alus alas.png" id="3_cfuic"]
-[ext_resource type="Texture2D" uid="uid://usj8xjw3n2mk" path="res://alus käännös/alus vasemmalle.png" id="4_qmjbq"]
-[ext_resource type="Texture2D" uid="uid://bsubkv8scgxdt" path="res://alus käännös/alus ylös.png" id="5_cq0i3"]
+[ext_resource type="Texture2D" uid="uid://cmgexkxceukd7" path="res://assets/grafiikka/alus käännös/alus oikea.png" id="2_b1jqy"]
+[ext_resource type="Texture2D" uid="uid://bf1i7cjkuoqbj" path="res://assets/grafiikka/alus käännös/alus alas.png" id="3_cfuic"]
+[ext_resource type="Texture2D" uid="uid://usj8xjw3n2mk" path="res://assets/grafiikka/alus käännös/alus vasemmalle.png" id="4_qmjbq"]
+[ext_resource type="Texture2D" uid="uid://bsubkv8scgxdt" path="res://assets/grafiikka/alus käännös/alus ylös.png" id="5_cq0i3"]
 [ext_resource type="Texture2D" uid="uid://cd45m23x26tae" path="res://pixelart_starfields/Nairan - Support Ship - Engine.png" id="6_yltfc"]
-[ext_resource type="AudioStream" uid="uid://bcib8ucfchd7l" path="res://alusliike.mp3" id="7_3mb7c"]
+[ext_resource type="AudioStream" uid="uid://bcib8ucfchd7l" path="res://assets/äänet/alusliike.mp3" id="7_3mb7c"]
 [ext_resource type="AudioStream" uid="uid://ctkh2tmrkmde6" path="res://assets/äänet/shoot.mp3" id="8_3p7t3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oc55o"]
@@ -176,7 +176,9 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D"]
+z_index = 1
 position = Vector2(104, 65)
+collision_mask = 6
 script = ExtResource("1_bsu2v")
 
 [node name="Alus" type="AnimatedSprite2D" parent="."]
@@ -188,13 +190,15 @@ animation = &"käännös0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_wg00p")
-disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(1.4, 1.4)
+zoom = Vector2(1.1, 1.1)
+limit_left = 0
+limit_top = 0
+limit_right = 6600
+limit_bottom = 4600
 
 [node name="MoottoriLiike" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(7, -1.43051e-06)
 rotation = 1.5708
 scale = Vector2(1.24115, 2.64423)

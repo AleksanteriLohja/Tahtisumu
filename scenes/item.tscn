@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1hs22nx2xbin"]
+
+[ext_resource type="Texture2D" uid="uid://c5glppls1su8u" path="res://assets/grafiikka/icon.svg" id="1_1xxwu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51vlr"]
+size = Vector2(125.43, 124.333)
+
+[node name="Item" type="Area2D"]
+collision_layer = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.56641, 5.375)
+scale = Vector2(0.726563, 0.75)
+shape = SubResource("RectangleShape2D_51vlr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, 5)
+scale = Vector2(0.726563, 0.75)
+texture = ExtResource("1_1xxwu")

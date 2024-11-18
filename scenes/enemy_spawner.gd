@@ -16,7 +16,7 @@ func _ready() -> void:
 func _on_timer_timeout() -> void:
 	#tarkistaa montako vihollista on jo luotu
 	var enemies = get_tree().get_nodes_in_group("enemies")
-	if enemies.size() < get_parent().max_enemies:
+	if enemies.size()<get_parent().max_enemies:
 	#pick random spawnpoint
 		var spawn = spawn_points[randi() % spawn_points.size()]
 	#spawn enemy

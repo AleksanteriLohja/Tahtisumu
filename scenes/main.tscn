@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://2kuiqqfnh7f5"]
+[gd_scene load_steps=9 format=3 uid="uid://2kuiqqfnh7f5"]
 
 [ext_resource type="PackedScene" uid="uid://c2c41fkp61tul" path="res://scenes/world.tscn" id="1_807yc"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_dhvq7"]
 [ext_resource type="PackedScene" uid="uid://dsknm4hiaictq" path="res://scenes/Player.tscn" id="2_wfuc4"]
-[ext_resource type="PackedScene" uid="uid://btelpmnfaft0o" path="res://scenes/enemy_spawner.tscn" id="3_loyku"]
+[ext_resource type="PackedScene" uid="uid://d3o03sic1esyp" path="res://scenes/enemy_spawner.tscn" id="3_loyku"]
 [ext_resource type="Script" path="res://scenes/bullet_manager.gd" id="4_0ucgg"]
 [ext_resource type="PackedScene" uid="uid://cat0uor30dsu2" path="res://scenes/bullet.tscn" id="5_dcf8m"]
+[ext_resource type="PackedScene" uid="uid://bshqosgxy80fr" path="res://scenes/hud.tscn" id="7_xv1s8"]
+[ext_resource type="PackedScene" uid="uid://bhrawrxps6vkw" path="res://scenes/game_over.tscn" id="8_e2da8"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_dhvq7")
@@ -13,7 +15,7 @@ script = ExtResource("1_dhvq7")
 [node name="TileMapLayer" parent="." instance=ExtResource("1_807yc")]
 
 [node name="player" parent="." instance=ExtResource("2_wfuc4")]
-position = Vector2(1139, 631)
+position = Vector2(3300, 2300)
 
 [node name="BulletManager" type="Node2D" parent="."]
 script = ExtResource("4_0ucgg")
@@ -22,5 +24,16 @@ bullet_scene = ExtResource("5_dcf8m")
 [node name="EnemySpawner" parent="." instance=ExtResource("3_loyku")]
 position = Vector2(-4, -8)
 
+[node name="Hud" parent="." instance=ExtResource("7_xv1s8")]
+
+[node name="GameOver" parent="." instance=ExtResource("8_e2da8")]
+process_mode = 2
+
+[node name="WaveOverTimer" type="Timer" parent="."]
+process_mode = 2
+wait_time = 3.504
+one_shot = true
+
 [connection signal="shoot" from="player" to="BulletManager" method="_on_player_shoot"]
 [connection signal="hit_p" from="EnemySpawner" to="." method="_on_enemy_spawner_hit_p"]
+[connection signal="timeout" from="WaveOverTimer" to="." method="_on_wave_over_timer_timeout"]

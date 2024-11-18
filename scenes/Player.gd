@@ -16,9 +16,14 @@ var fade_out_speed:float = 0.5 #hidastus äänen feidaus
 @onready var Alus_audioTaakse: AudioStreamPlayer2D = $AlusMoottoriTaakse #moottorin ääni taaksepäin
 @onready var Ampuminen_audio: AudioStreamPlayer2D = $AlusAmpuminen #ampumisen ääni
 
-func _ready():
+func _ready():#kutsuu reset funktion jossa on kaikki tarvittava pelin aloitukseen
+	reset()
+
+func reset():
 	speed = 500
 	can_shoot = true
+	position = Vector2(3300, 2300) #pelaajan aloitus paikka, koordinaatit x,y
+		
 
 func get_input(delta):
 	# Keyboard input
@@ -76,7 +81,6 @@ func _physics_process(delta):
 	
 	# Player rotation hallinta hiirellä
 	var mouse = get_local_mouse_position()
-	var target_position = global_position.lerp(mouse, rotation_speed * delta)
 	look_at(to_global(mouse))
 	
 	

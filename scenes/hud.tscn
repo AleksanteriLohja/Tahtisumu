@@ -1,0 +1,61 @@
+[gd_scene load_steps=2 format=3 uid="uid://bshqosgxy80fr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbhyt"]
+
+[node name="Hud" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+offset_top = 1418.0
+offset_right = 2400.0
+offset_bottom = 1501.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_dbhyt")
+
+[node name="LivesLable" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 768.0
+offset_top = -140.0
+offset_right = 912.0
+offset_bottom = -44.0
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 60
+text = "X3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="WaveLable" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 1096.0
+offset_top = -140.0
+offset_right = 1330.0
+offset_bottom = -44.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 60
+text = "WAVE: 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EnemiesLable" type="Label" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -936.0
+offset_top = -140.0
+offset_right = -597.0
+offset_bottom = -44.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 60
+text = "ENEMIES:10"
+horizontal_alignment = 1
+vertical_alignment = 1
