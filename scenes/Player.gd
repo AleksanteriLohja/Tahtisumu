@@ -2,11 +2,15 @@ extends CharacterBody2D
 
 signal shoot
 
+const NORMAL_SHOT : float = 0.4
+const FAST_SHOT : float = 0.1
+
 var can_shoot :  bool
-var speed: int
-var acceleration: float = 700 #kiihdytyksen nopeus
-var max_speed: float = 500 #maksimivauhti
-var friction: float = 300 #hidastukseen vaikuttava kitka
+var speed = 500
+var acceleration: float = 800 #kiihdytyksen nopeus
+var max_speed: float = 500 #kiihdytyksen käyttämä maksimivauhti
+var BOOST_SPEED = max_speed*1.5
+var friction: float =  500#hidastukseen vaikuttava kitka
 var rotation_speed: float = 5.0  # Määritellään rotaation nopeus
 var fade_out_speed:float = 0.5 #hidastus äänen feidaus
 
@@ -20,10 +24,10 @@ func _ready():#kutsuu reset funktion jossa on kaikki tarvittava pelin aloituksee
 	reset()
 
 func reset():
-	speed = 500
+	max_speed = 500
 	can_shoot = true
 	position = Vector2(3300, 2300) #pelaajan aloitus paikka, koordinaatit x,y
-		
+	$ShotTimer.wait_time = NORMAL_SHOT	
 
 func get_input(delta):
 	# Keyboard input
@@ -82,7 +86,25 @@ func _physics_process(delta):
 	# Player rotation hallinta hiirellä
 	var mouse = get_local_mouse_position()
 	look_at(to_global(mouse))
+
+#nostaa pelaajan vauhtia timerin määrittämäksi ajaksi	
+func boost():
+	$BoostTimer.start()
+	max_speed = BOOST_SPEED
+	Alus_audioEteen.pitch_scale = 2
 	
+
+#palauttaa vauhdin normaaliksi	
+func _on_boost_timer_timeout() -> void:
+	max_speed = speed
+	Alus_audioEteen.pitch_scale = 1.2
+
+func quick_fire():
+	$FastFireTimer.start()
+	$ShotTimer.wait_time = FAST_SHOT
 	
 func _on_shot_timer_timeout() -> void:
 	can_shoot = true
+	
+func _on_fast_fire_timer_timeout() -> void:
+	$ShotTimer.wait_time = NORMAL_SHOT

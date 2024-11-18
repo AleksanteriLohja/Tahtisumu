@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5glppls1su8u"
-path="res://.godot/imported/icon.svg-faeacc6114038d8f422f8a2b6f934a45.ctex"
+uid="uid://8hehv3bmhopv"
+path="res://.godot/imported/animate h3.png-542081eb8555b745fe4ff3052f80f20f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/grafiikka/icon.svg"
-dest_files=["res://.godot/imported/icon.svg-faeacc6114038d8f422f8a2b6f934a45.ctex"]
+source_file="res://assets/grafiikka/items/Pixel Heart/animate/animate h3.png"
+dest_files=["res://.godot/imported/animate h3.png-542081eb8555b745fe4ff3052f80f20f.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

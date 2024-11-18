@@ -13,7 +13,7 @@ config_version=5
 config/name="Top Down Template 2d"
 run/main_scene="res://scenes/world.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-config/icon="res://assets/grafiikka/icon.svg"
+config/icon="res://assets/grafiikka/items/icon.svg"
 
 [display]
 

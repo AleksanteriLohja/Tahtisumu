@@ -86,7 +86,7 @@ script = ExtResource("1_bh3bf")
 position = Vector2(33.25, 18.75)
 scale = Vector2(1.85937, 2.03125)
 sprite_frames = SubResource("SpriteFrames_athg4")
-animation = &"tuho"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionEnemy" type="CollisionShape2D" parent="."]

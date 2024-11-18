@@ -45,7 +45,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wg00p"]
-size = Vector2(50, 47)
+size = Vector2(46, 38)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqw86"]
 atlas = ExtResource("6_yltfc")
@@ -189,6 +189,7 @@ sprite_frames = SubResource("SpriteFrames_oc55o")
 animation = &"käännös0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_wg00p")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -216,16 +217,26 @@ autoplay = "MoottoriIdle"
 
 [node name="AlusMoottoriEteen" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_3mb7c")
-pitch_scale = 1.94
+pitch_scale = 1.23
 
 [node name="AlusMoottoriTaakse" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_3mb7c")
 pitch_scale = 0.96
 
 [node name="ShotTimer" type="Timer" parent="."]
-wait_time = 0.221
+wait_time = 0.316
 
 [node name="AlusAmpuminen" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_3p7t3")
 
+[node name="BoostTimer" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
+
+[node name="FastFireTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="timeout" from="ShotTimer" to="." method="_on_shot_timer_timeout"]
+[connection signal="timeout" from="BoostTimer" to="." method="_on_boost_timer_timeout"]
+[connection signal="timeout" from="FastFireTimer" to="." method="_on_fast_fire_timer_timeout"]

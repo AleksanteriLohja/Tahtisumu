@@ -31,7 +31,7 @@ process_mode = 2
 
 [node name="WaveOverTimer" type="Timer" parent="."]
 process_mode = 2
-wait_time = 3.504
+wait_time = 2.0
 one_shot = true
 
 [connection signal="shoot" from="player" to="BulletManager" method="_on_player_shoot"]

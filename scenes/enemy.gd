@@ -1,14 +1,14 @@
 extends CharacterBody2D
 
-var speed : float = 250
-var alive: bool
-var rotation_speed = 40
-var item_scene := preload("res://scenes/item.tscn")
+var speed : float = 250  #vihollisen nopeus
+var alive: bool 
+var rotation_speed = 40 #vihollisen kääntymisnopeus
+var item_scene := preload("res://scenes/item.tscn") #täältä tuodaan tiputettavat itemit
 
-@onready var main = get_node("/root/main")
-@onready var player = get_node("/root/main/player")
-@onready var animated_sprite = $AnimatedSprite2D
-@onready var audio_tuho = $EnemyTuho
+@onready var main = get_node("/root/main") #tuodaan main node jotta voidaan viitata siihen
+@onready var player = get_node("/root/main/player") #tuodaan player node jotta voidaan viitata siihen
+@onready var animated_sprite = $AnimatedSprite2D #tuodaan animaatio	
+@onready var audio_tuho = $EnemyTuho #tuodaan audio
 
 signal hit_player
 
@@ -33,13 +33,15 @@ func die():
 	animated_sprite.play("tuho")
 	#$EnemyDeathTimer.start() #tämä määrittää kuoleman viiveen jotta animaatio ehtii toistua
 	call_deferred("disable_collision")
-	#drop_item()
-	
-#func drop_item():
-	#var item = item_scene.instantiate()
-	#item.position = position
-	#main.call_deferred("add_child", item)
-	#item.add_to_group("items")
+	drop_item()
+
+#tämä hallitsee esineiden tiputtamista	
+func drop_item():
+	var item = item_scene.instantiate()
+	item.position = position #esineen paikka
+	item.item_type = randi_range(0,2)
+	main.call_deferred("add_child", item)
+	item.add_to_group("items") #luodaan ryhmä ja lisätään luodut itemit ryhmään
 	
 func disable_collision():
 	$CollisionEnemy.disabled = true
