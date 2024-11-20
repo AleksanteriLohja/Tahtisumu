@@ -4,6 +4,7 @@ var speed : float = 250  #vihollisen nopeus
 var alive: bool 
 var rotation_speed = 40 #vihollisen kääntymisnopeus
 var item_scene := preload("res://scenes/item.tscn") #täältä tuodaan tiputettavat itemit
+var DROP_CHANCE : float = 0.1 #itemien dropchance
 
 @onready var main = get_node("/root/main") #tuodaan main node jotta voidaan viitata siihen
 @onready var player = get_node("/root/main/player") #tuodaan player node jotta voidaan viitata siihen
@@ -33,7 +34,8 @@ func die():
 	animated_sprite.play("tuho")
 	#$EnemyDeathTimer.start() #tämä määrittää kuoleman viiveen jotta animaatio ehtii toistua
 	call_deferred("disable_collision")
-	drop_item()
+	if randf() <= DROP_CHANCE:
+		drop_item()
 
 #tämä hallitsee esineiden tiputtamista	
 func drop_item():

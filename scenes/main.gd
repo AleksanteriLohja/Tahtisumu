@@ -38,7 +38,9 @@ func _process(_delta):
 		wave += 1
 		difficulty *= DIFF_MULTIPLIER
 		timer_started = true
+		$Hud/WaveCompletedLabel.text = "WAVE COMPLETED"
 		await get_tree().create_timer(4.0).timeout #kauanko kestää että kutsutaan reset ja siirrytään seuraavaan aaltoon kun kaikki viholliset on tuhottu
+		$Hud/WaveCompletedLabel.text = ""
 		reset()
 		timer_started = false
 		
@@ -55,6 +57,7 @@ func _on_enemy_spawner_hit_p() -> void:
 		
 	
 func _on_wave_over_timer_timeout() -> void:
+	$Hud/WaveCompletedLabel.text = ""
 	reset()
 	print("reset")
 
