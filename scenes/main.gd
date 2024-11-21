@@ -5,6 +5,9 @@ const DIFF_MULTIPLIER : float = 1.5 #kerroin sille kuinka nopeasti pelistä tule
 var max_enemies: int
 var lives : int
 var timer_started = false
+
+@onready var music_player = $Taustamusiikki
+var pitch_scale = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_game()
@@ -37,6 +40,8 @@ func _process(_delta):
 	if is_wave_completed() and not timer_started:
 		wave += 1
 		difficulty *= DIFF_MULTIPLIER
+		pitch_scale += 0.02
+		music_player.pitch_scale = pitch_scale
 		timer_started = true
 		$Hud/WaveCompletedLabel.text = "WAVE COMPLETED"
 		await get_tree().create_timer(4.0).timeout #kauanko kestää että kutsutaan reset ja siirrytään seuraavaan aaltoon kun kaikki viholliset on tuhottu
