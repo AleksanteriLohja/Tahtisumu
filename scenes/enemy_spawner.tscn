@@ -9,23 +9,11 @@ script = ExtResource("1_1pv3l")
 wait_time = 0.199
 autostart = true
 
-[node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(-369, 462)
-
 [node name="Marker2D2" type="Marker2D" parent="."]
-position = Vector2(-342, 1429)
+position = Vector2(-750, 2292)
 
 [node name="Marker2D3" type="Marker2D" parent="."]
-position = Vector2(-328, 2298)
-
-[node name="Marker2D4" type="Marker2D" parent="."]
-position = Vector2(-498, 3384)
-
-[node name="Marker2D9" type="Marker2D" parent="."]
-position = Vector2(669, -449)
-
-[node name="Marker2D10" type="Marker2D" parent="."]
-position = Vector2(2046, -534)
+position = Vector2(-736, 3233)
 
 [node name="Marker2D11" type="Marker2D" parent="."]
 position = Vector2(3368, -511)
@@ -33,28 +21,16 @@ position = Vector2(3368, -511)
 [node name="Marker2D12" type="Marker2D" parent="."]
 position = Vector2(5000, -523)
 
-[node name="Marker2D5" type="Marker2D" parent="."]
-position = Vector2(7348, 310)
-
 [node name="Marker2D6" type="Marker2D" parent="."]
-position = Vector2(7497, 1587)
+position = Vector2(9103, 2306)
 
 [node name="Marker2D7" type="Marker2D" parent="."]
-position = Vector2(7466, 3034)
-
-[node name="Marker2D8" type="Marker2D" parent="."]
-position = Vector2(7354, 4615)
+position = Vector2(9145, 3346)
 
 [node name="Marker2D13" type="Marker2D" parent="."]
-position = Vector2(4986, 5120)
+position = Vector2(5081, 6223)
 
 [node name="Marker2D14" type="Marker2D" parent="."]
-position = Vector2(3264, 5114)
-
-[node name="Marker2D15" type="Marker2D" parent="."]
-position = Vector2(1922, 5020)
-
-[node name="Marker2D16" type="Marker2D" parent="."]
-position = Vector2(485, 4981)
+position = Vector2(3911, 6337)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

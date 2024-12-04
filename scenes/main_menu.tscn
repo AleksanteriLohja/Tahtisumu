@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://cnee8jlp3k4e3"]
+
+[ext_resource type="Script" path="res://main_menu.gd" id="1_ivkfg"]
+[ext_resource type="Texture2D" uid="uid://bjx3tqylbm0mm" path="res://assets/grafiikka/taustat/Space Background (4).png" id="2_su7nd"]
+[ext_resource type="AudioStream" uid="uid://ddsiim8yv10mt" path="res://assets/äänet/waiting-time-175800.mp3" id="3_1yt6v"]
+
+[node name="MainMenu" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_ivkfg")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 2416.0
+offset_bottom = 1517.0
+
+[node name="SpaceBackground(4)" type="Sprite2D" parent="."]
+position = Vector2(1211.25, 763.25)
+scale = Vector2(0.815167, 0.77975)
+texture = ExtResource("2_su7nd")
+
+[node name="NewGame1" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 840.0
+offset_top = 448.0
+offset_right = 1588.0
+offset_bottom = 704.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 80
+text = "NEW GAME"
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 840.0
+offset_top = 760.0
+offset_right = 1588.0
+offset_bottom = 1016.0
+grow_vertical = 2
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 80
+text = "QUIT"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_1yt6v")
+autoplay = true
+
+[connection signal="pressed" from="NewGame1" to="." method="_on_new_game_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

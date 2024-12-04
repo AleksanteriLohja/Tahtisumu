@@ -1,0 +1,265 @@
+[gd_scene load_steps=34 format=3 uid="uid://y2niwpg457dv"]
+
+[ext_resource type="AudioStream" uid="uid://b5fg0ym7crmhk" path="res://assets/äänet/portal.mp3" id="1_hl4g1"]
+[ext_resource type="Script" path="res://scenes/portal_1.gd" id="1_m5gy7"]
+[ext_resource type="Texture2D" uid="uid://0d17px1tejgt" path="res://assets/grafiikka/Pixel Art Animated Portal/sprite-sheet.png" id="2_oltq0"]
+[ext_resource type="Script" path="res://scenes/portal_2.gd" id="3_ceawu"]
+[ext_resource type="Script" path="res://scenes/portal_3.gd" id="5_k50sf"]
+[ext_resource type="Texture2D" uid="uid://3k3klq8ewxxs" path="res://assets/grafiikka/Pixel Art Animated Portal/sprite-sheet – kopio.png" id="5_nx22m"]
+[ext_resource type="Script" path="res://scenes/portal_4.gd" id="6_q7gx5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q84hs"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ph80s"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20qbi"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4k2d"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s17ou"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_615gu"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x0n0g"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djury"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q84hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ph80s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20qbi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4k2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s17ou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_615gu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x0n0g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t23q7"]
+radius = 121.066
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_240d7"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtgiy"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u5its"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rggw2"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a3qlm"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cca86"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pxbb1"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gdlw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_240d7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtgiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u5its")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rggw2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a3qlm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cca86")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pxbb1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67qsp"]
+atlas = ExtResource("5_nx22m")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgcv4"]
+atlas = ExtResource("5_nx22m")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qies"]
+atlas = ExtResource("5_nx22m")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sy3tl"]
+atlas = ExtResource("5_nx22m")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uy2tv"]
+atlas = ExtResource("5_nx22m")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0426t"]
+atlas = ExtResource("5_nx22m")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvbtb"]
+atlas = ExtResource("5_nx22m")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwgf0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_67qsp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mgcv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qies")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sy3tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uy2tv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0426t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvbtb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hx2co"]
+radius = 140.428
+
+[node name="Portals" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_hl4g1")
+
+[node name="Portal_1" type="Area2D" parent="."]
+position = Vector2(384, 202)
+script = ExtResource("1_m5gy7")
+
+[node name="portal_sprite_1" type="AnimatedSprite2D" parent="Portal_1"]
+position = Vector2(808, 499)
+scale = Vector2(10, 10.488)
+sprite_frames = SubResource("SpriteFrames_djury")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal_1"]
+position = Vector2(801, 499)
+shape = SubResource("CircleShape2D_t23q7")
+
+[node name="destination_portal_1" type="Marker2D" parent="Portal_1"]
+position = Vector2(273, 499)
+
+[node name="Portal_2" type="Area2D" parent="."]
+position = Vector2(-1579, 338)
+script = ExtResource("3_ceawu")
+
+[node name="portal_sprite_2" type="AnimatedSprite2D" parent="Portal_2"]
+position = Vector2(-373, 171)
+scale = Vector2(10, 10.488)
+sprite_frames = SubResource("SpriteFrames_2gdlw")
+autoplay = "default"
+frame_progress = 0.626283
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal_2"]
+position = Vector2(-375, 167)
+shape = SubResource("CircleShape2D_t23q7")
+
+[node name="destination_portal_2" type="Marker2D" parent="Portal_2"]
+position = Vector2(-810, 0)
+
+[node name="portal_3" type="Area2D" parent="."]
+position = Vector2(-628, 1974)
+script = ExtResource("5_k50sf")
+
+[node name="portal_sprite_3" type="AnimatedSprite2D" parent="portal_3"]
+position = Vector2(-445, 203)
+scale = Vector2(9.94531, 11.2656)
+sprite_frames = SubResource("SpriteFrames_xwgf0")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal_3"]
+position = Vector2(-435, 203)
+shape = SubResource("CircleShape2D_hx2co")
+
+[node name="destination_portal_3" type="Marker2D" parent="portal_3"]
+position = Vector2(-53, 499)
+
+[node name="portal_4" type="Area2D" parent="."]
+position = Vector2(-2272, 1653)
+script = ExtResource("6_q7gx5")
+
+[node name="portal_sprite_4" type="AnimatedSprite2D" parent="portal_4"]
+position = Vector2(-612, 320)
+scale = Vector2(9.94531, 11.2656)
+sprite_frames = SubResource("SpriteFrames_xwgf0")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="portal_4"]
+position = Vector2(-622, 324)
+shape = SubResource("CircleShape2D_hx2co")
+
+[node name="destination_portal_4" type="Marker2D" parent="portal_4"]
+position = Vector2(0, 602)
+
+[connection signal="body_entered" from="Portal_1" to="Portal_1" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_2" to="Portal_2" method="_on_body_entered"]
+[connection signal="body_entered" from="portal_3" to="portal_3" method="_on_body_entered"]
+[connection signal="body_entered" from="portal_4" to="portal_4" method="_on_body_entered"]

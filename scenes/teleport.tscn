@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://tfdl7e2ctsi6"]
+
+[ext_resource type="Texture2D" uid="uid://drqvvg1g6dwpt" path="res://assets/grafiikka/CelestialObjects/portaali.png" id="1_xp1jd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t23q7"]
+radius = 84.1487
+
+[node name="Teleport" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(42, 39)
+
+[node name="Portaali" type="Sprite2D" parent="Area2D"]
+position = Vector2(29.5, 24.5)
+scale = Vector2(2.11719, 2.29592)
+texture = ExtResource("1_xp1jd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(29, 17)
+shape = SubResource("CircleShape2D_t23q7")

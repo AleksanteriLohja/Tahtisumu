@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://clb12rylqmee2"]
+[gd_scene load_steps=16 format=3 uid="uid://clb12rylqmee2"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_bh3bf"]
 [ext_resource type="Texture2D" uid="uid://c8nuoahfrc1b3" path="res://assets/grafiikka/green_32x16.png" id="2_25lh8"]
 [ext_resource type="Texture2D" uid="uid://b3n3t3b5e8nfd" path="res://assets/grafiikka/Effect and Bullet 16x16/Green Effect and Bullet 16x16.png" id="3_tn3h1"]
 [ext_resource type="AudioStream" uid="uid://cgm4k102mn88l" path="res://assets/äänet/8-bit-explosion-95847.mp3" id="4_tb1sv"]
+[ext_resource type="AudioStream" uid="uid://dee7a2qubh0ha" path="res://assets/äänet/game-over-arcade-6435.mp3" id="5_x5gbo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_veelh"]
 atlas = ExtResource("3_tn3h1")
@@ -71,10 +72,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqig"]
-size = Vector2(51.5, 29)
+size = Vector2(65, 36)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7dhl"]
-size = Vector2(53.5, 32.5)
+size = Vector2(68, 39)
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(-3, -2)
@@ -84,16 +85,15 @@ script = ExtResource("1_bh3bf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(33.25, 18.75)
-scale = Vector2(1.85937, 2.03125)
+scale = Vector2(2.5, 2.731)
 sprite_frames = SubResource("SpriteFrames_athg4")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionEnemy" type="CollisionShape2D" parent="."]
-position = Vector2(31.25, 19.5)
+visible = false
+position = Vector2(30.5, 20)
 shape = SubResource("RectangleShape2D_ysqig")
-
-[node name="EnemyDeathTimer" type="Timer" parent="."]
 
 [node name="EnemyTuho" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_tb1sv")
@@ -102,8 +102,10 @@ stream = ExtResource("4_tb1sv")
 position = Vector2(30.25, 19.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(1, 0.25)
+position = Vector2(0.75, 0)
 shape = SubResource("RectangleShape2D_j7dhl")
 
-[connection signal="timeout" from="EnemyDeathTimer" to="." method="_on_enemy_death_timer_timeout"]
+[node name="EnemyHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_x5gbo")
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -7,12 +7,13 @@ var lives : int
 var timer_started = false
 
 @onready var music_player = $Taustamusiikki
+@onready var destroy_animation = get_node("player/Alus")
+@onready var collision = get_node("player/CollisionShape2D")
 var pitch_scale = 1.0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_game()
 	$GameOver/NewGame.pressed.connect(new_game)
-
 	
 func new_game():
 	wave = 1
@@ -22,6 +23,7 @@ func new_game():
 	reset()
 	
 func reset():
+	$player.reset()
 	max_enemies = int(difficulty)
 	get_tree().call_group("enemies", "queue_free")
 	get_tree().call_group("bullet", "queue_free")
@@ -40,7 +42,7 @@ func _process(_delta):
 	if is_wave_completed() and not timer_started:
 		wave += 1
 		difficulty *= DIFF_MULTIPLIER
-		pitch_scale += 0.02
+		pitch_scale += 0.01
 		music_player.pitch_scale = pitch_scale
 		timer_started = true
 		$Hud/WaveCompletedLabel.text = "WAVE COMPLETED"
@@ -52,19 +54,25 @@ func _process(_delta):
 #vähentaa pelaajan hp määrää kun vihollinen osuu pelaajaan
 func _on_enemy_spawner_hit_p() -> void:
 	lives -= 1
+	collision.set_deferred("set_disabled", true)
 	$Hud/LivesLabel.text = "X " + str(lives)
-	get_tree().paused = true
 	if lives <= 0:
-		$GameOver/WavesSurvivedLable.text = "WAVES SURVIVED: " + str(wave - 1)
+		destroy_animation.play("tuho")
+		$GameOverSound.play()
+		await get_tree().create_timer(1.2).timeout
+		$GameOver/WavesSurvivedLabel.text = "WAVES SURVIVED: " + str(wave - 1)
+		get_tree().paused = true
 		$GameOver.show()
 	else:
+		destroy_animation.play("tuho")
+		await get_tree().create_timer(1).timeout
+		get_tree().paused = true
 		$WaveOverTimer.start()	
 		
 	
 func _on_wave_over_timer_timeout() -> void:
 	$Hud/WaveCompletedLabel.text = ""
 	reset()
-	print("reset")
 
 
 		

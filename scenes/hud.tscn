@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bshqosgxy80fr"]
 
-[ext_resource type="Texture2D" uid="uid://bf1i7cjkuoqbj" path="res://assets/grafiikka/alus käännös/alus alas.png" id="1_bwr30"]
+[ext_resource type="Texture2D" uid="uid://bp27dsjfr7emy" path="res://assets/grafiikka/items/health.png" id="1_4njqx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dbhyt"]
 
@@ -32,7 +32,7 @@ vertical_alignment = 1
 [node name="AlusAlas" type="Sprite2D" parent="LivesLabel"]
 position = Vector2(-56, 48)
 scale = Vector2(6.25, 6.75)
-texture = ExtResource("1_bwr30")
+texture = ExtResource("1_4njqx")
 
 [node name="WaveLabel" type="Label" parent="."]
 anchors_preset = 2

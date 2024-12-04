@@ -1,10 +1,10 @@
 extends CharacterBody2D
 
-var speed : float = 250  #vihollisen nopeus
+var speed : float = 350  #vihollisen nopeus
 var alive: bool 
 var rotation_speed = 40 #vihollisen kääntymisnopeus
 var item_scene := preload("res://scenes/item.tscn") #täältä tuodaan tiputettavat itemit
-var DROP_CHANCE : float = 0.1 #itemien dropchance
+var DROP_CHANCE : float = 0.3 #itemien dropchance
 
 @onready var main = get_node("/root/main") #tuodaan main node jotta voidaan viitata siihen
 @onready var player = get_node("/root/main/player") #tuodaan player node jotta voidaan viitata siihen
@@ -18,7 +18,7 @@ func _ready():
 	
 	
 #viholliset liikkuvat aina pelaajan suntaan	
-func _physics_process(delta):
+func _physics_process(_delta):
 	if alive:
 		var direction = (player.global_position - global_position).normalized()
 		velocity = direction*speed
@@ -53,4 +53,8 @@ func disable_collision():
 
 #toistetaan signaali kun vihollinen osuu pelaajaan
 func _on_area_2d_body_entered(_body):
+	$EnemyHit.play()
+	$EnemyTuho.play()
 	hit_player.emit()
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		enemy.call_deferred("disable_collision")

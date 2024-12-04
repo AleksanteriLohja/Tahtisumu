@@ -1,0 +1,166 @@
+[gd_scene load_steps=22 format=3 uid="uid://y2niwpg457dv"]
+
+[ext_resource type="Script" path="res://scenes/portal_1.gd" id="1_m5gy7"]
+[ext_resource type="Texture2D" uid="uid://0d17px1tejgt" path="res://assets/grafiikka/Pixel Art Animated Portal/sprite-sheet.png" id="2_oltq0"]
+[ext_resource type="Script" path="res://scenes/portal_2.gd" id="3_ceawu"]
+[ext_resource type="AudioStream" uid="uid://bals680jfb1vo" path="res://assets/äänet/teleport-sound-95186.mp3" id="4_10yy5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yr4ut"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_andyd"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gikv"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nqg51"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84kve"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i8vpf"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_on0md"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_djury"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yr4ut")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_andyd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gikv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nqg51")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_84kve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8vpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_on0md")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_t23q7"]
+radius = 121.066
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lumf"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x581c"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2fuuw"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5ugx"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b4dp"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8agwe"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3hf2"]
+atlas = ExtResource("2_oltq0")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2gdlw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lumf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x581c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2fuuw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5ugx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b4dp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8agwe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3hf2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Portals" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_10yy5")
+
+[node name="Portal_1" type="Area2D" parent="."]
+position = Vector2(42, 39)
+script = ExtResource("1_m5gy7")
+
+[node name="portal_sprite_1" type="AnimatedSprite2D" parent="Portal_1"]
+position = Vector2(251.75, 138.25)
+scale = Vector2(10, 10.488)
+sprite_frames = SubResource("SpriteFrames_djury")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal_1"]
+position = Vector2(252, 130)
+shape = SubResource("CircleShape2D_t23q7")
+
+[node name="destination_portal_1" type="Marker2D" parent="Portal_1"]
+position = Vector2(-83, 29)
+
+[node name="Portal_2" type="Area2D" parent="."]
+position = Vector2(42, 39)
+script = ExtResource("3_ceawu")
+
+[node name="portal_sprite_2" type="AnimatedSprite2D" parent="Portal_2"]
+position = Vector2(-373, 171)
+scale = Vector2(10, 10.488)
+sprite_frames = SubResource("SpriteFrames_2gdlw")
+autoplay = "default"
+frame_progress = 0.29828
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Portal_2"]
+position = Vector2(-375, 167)
+shape = SubResource("CircleShape2D_t23q7")
+
+[node name="destination_portal_2" type="Marker2D" parent="Portal_2"]
+position = Vector2(-83, 29)
+
+[connection signal="body_entered" from="Portal_1" to="Portal_1" method="_on_body_entered"]
+[connection signal="body_entered" from="Portal_2" to="Portal_2" method="_on_body_entered"]
