@@ -2,20 +2,21 @@ extends CharacterBody2D
 
 signal shoot
 
-const NORMAL_SHOT : float = 0.4
+const NORMAL_SHOT : float = 0.3
 const FAST_SHOT : float = 0.1
 
 var can_shoot :  bool
-var speed = 600
-var acceleration: float = 800 #kiihdytyksen nopeus
+var speed = 700
+var acceleration: float = 1000 #kiihdytyksen nopeus
 var max_speed: float = 700 #kiihdytyksen käyttämä maksimivauhti
 var BOOST_SPEED = max_speed*1.5
-var friction: float =  500#hidastukseen vaikuttava kitka
-var rotation_speed: float = 5.0  # Määritellään rotaation nopeus
+var friction: float =  600#hidastukseen vaikuttava kitka
+var rotation_speed: float = 4.0  # Määritellään rotaation nopeus
 var fade_out_speed:float = 0.5 #hidastus äänen feidaus
 
 @onready var Vahinko_sprite: AnimatedSprite2D = $AlusVahinko #vahinko animaatio
 @onready var Liike_sprite: AnimatedSprite2D = $MoottoriLiike #moottorin tulianimaatio
+@onready var Liike_sprite2: AnimatedSprite2D = $MoottoriLiike2 #moottorin tulianimaatio
 @onready var Idle_sprite: AnimatedSprite2D = $MoottoriIdle #moottorin idelanimaatio
 @onready var Alus_audioEteen: AudioStreamPlayer = $AlusMoottoriEteen #moottorin ääni eteenpäin
 @onready var Alus_audioTaakse: AudioStreamPlayer = $AlusMoottoriTaakse #moottorin ääni taaksepäin
@@ -43,10 +44,11 @@ func get_input(delta):
 		#liikuttaa pelaajaa hiiren suuntaan ja toistaa animaation
 		input_dir = (mouse_pos - global_position).normalized()
 		Liike_sprite.visible = true
+		Liike_sprite2.visible = true
 		if not Alus_audioEteen.is_playing():
 			#toistaa äänitehosteen
 			Alus_audioEteen.play()
-			Alus_audioEteen.volume_db = 0
+			Alus_audioEteen.volume_db = -20
 		
 	if Input.is_action_pressed("down"):
 		#liikuttaa pelaajaa kursorista päinvastaiseen suuntaan
@@ -54,21 +56,21 @@ func get_input(delta):
 		if not Alus_audioEteen.is_playing():
 			#toistaa äänitehosteen
 			Alus_audioEteen.play()
-			Alus_audioEteen.volume_db = 0
+			Alus_audioEteen.volume_db = -20
 		
 	if Input.is_action_pressed("left"):
 		input_dir.x -= 1
 		if not Alus_audioEteen.is_playing():
 			#toistaa äänitehosteen
 			Alus_audioEteen.play()
-			Alus_audioEteen.volume_db = 0
+			Alus_audioEteen.volume_db = -20
 	
 	if Input.is_action_pressed("right"):
 		input_dir.x += 1
 		if not Alus_audioEteen.is_playing():
 			#toistaa äänitehosteen
 			Alus_audioEteen.play()
-			Alus_audioEteen.volume_db = 0
+			Alus_audioEteen.volume_db = -20
 		
 		
 		#shooting with mouse
@@ -89,6 +91,7 @@ func get_input(delta):
 		# Hidastuksen hallinta
 		velocity = velocity.move_toward(Vector2(), friction * delta)
 		Liike_sprite.visible = false
+		Liike_sprite2.visible = false
 		Vahinko_sprite.visible = false
 		if Alus_audioEteen.is_playing():
 			Alus_audioEteen.volume_db = lerp(Alus_audioEteen.volume_db,-80.0,fade_out_speed*delta)
@@ -109,7 +112,7 @@ func boost():
 	animated_sprite.play(("boost"))
 	$BoostTimer.start()
 	max_speed = BOOST_SPEED
-	Alus_audioEteen.pitch_scale = 1.5
+	Alus_audioEteen.pitch_scale = 1.2
 
 	
 

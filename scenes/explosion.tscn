@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://f7khul2s6bbj"]
+
+[ext_resource type="Script" path="res://scenes/explosion.gd" id="1_fruva"]
+
+[sub_resource type="Curve" id="Curve_chc4t"]
+_data = [Vector2(0.184549, 1), 0.0, 0.0, 0, 0, Vector2(0.982833, 0.208791), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="explosion" type="CPUParticles2D"]
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 150.0
+scale_amount_min = 12.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_chc4t")
+color = Color(0.909804, 0.815686, 0.172549, 1)
+script = ExtResource("1_fruva")

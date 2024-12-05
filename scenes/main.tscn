@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://2kuiqqfnh7f5"]
+[gd_scene load_steps=14 format=3 uid="uid://2kuiqqfnh7f5"]
 
 [ext_resource type="PackedScene" uid="uid://c2c41fkp61tul" path="res://scenes/world.tscn" id="1_807yc"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_dhvq7"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bshqosgxy80fr" path="res://scenes/hud.tscn" id="7_xv1s8"]
 [ext_resource type="PackedScene" uid="uid://bhrawrxps6vkw" path="res://scenes/game_over.tscn" id="8_e2da8"]
 [ext_resource type="AudioStream" uid="uid://do3s4ntc0twoy" path="res://assets/äänet/game-music-7408.mp3" id="9_k4pwa"]
+[ext_resource type="PackedScene" uid="uid://bk8s8ithef4pb" path="res://scenes/pause_game.tscn" id="9_s52f5"]
 [ext_resource type="PackedScene" uid="uid://y2niwpg457dv" path="res://scenes/portal.tscn" id="10_dn233"]
 [ext_resource type="AudioStream" uid="uid://dee7a2qubh0ha" path="res://assets/äänet/game-over-arcade-6435.mp3" id="11_6i832"]
 [ext_resource type="AudioStream" uid="uid://dxvcev4bqwcjv" path="res://assets/äänet/game-over-31-179699.mp3" id="11_d8yoc"]
@@ -31,7 +32,9 @@ position = Vector2(-4, -8)
 [node name="Hud" parent="." instance=ExtResource("7_xv1s8")]
 
 [node name="GameOver" parent="." instance=ExtResource("8_e2da8")]
-process_mode = 2
+process_mode = 3
+
+[node name="Pause_game" parent="." instance=ExtResource("9_s52f5")]
 
 [node name="WaveOverTimer" type="Timer" parent="."]
 process_mode = 2
@@ -40,7 +43,7 @@ one_shot = true
 
 [node name="Taustamusiikki" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_k4pwa")
-volume_db = -16.758
+volume_db = -18.265
 autoplay = true
 parameters/looping = true
 
@@ -48,7 +51,7 @@ parameters/looping = true
 position = Vector2(1359, 3717)
 
 [node name="Portal_1" parent="Portals" index="1"]
-position = Vector2(-259, 779)
+position = Vector2(-430, 427)
 
 [node name="portal_sprite_1" parent="Portals/Portal_1" index="0"]
 position = Vector2(394, 138)
@@ -57,28 +60,35 @@ position = Vector2(394, 138)
 position = Vector2(395, 137)
 
 [node name="destination_portal_1" parent="Portals/Portal_1" index="2"]
-position = Vector2(6273, -3078)
+position = Vector2(5446, -3242)
 
 [node name="Portal_2" parent="Portals" index="2"]
-position = Vector2(5977, -2845)
+position = Vector2(6091, -2712)
 
 [node name="destination_portal_2" parent="Portals/Portal_2" index="2"]
-position = Vector2(-5349, 3726)
+position = Vector2(-5711, 3688)
 
 [node name="portal_3" parent="Portals" index="3"]
 position = Vector2(-841, -3044)
 
 [node name="portal_sprite_3" parent="Portals/portal_3" index="0"]
-position = Vector2(628, 152)
+position = Vector2(786, 474)
 
 [node name="CollisionShape2D" parent="Portals/portal_3" index="1"]
-position = Vector2(622, 155)
+position = Vector2(780, 483)
 
 [node name="destination_portal_3" parent="Portals/portal_3" index="2"]
-position = Vector2(5579, 4381)
+position = Vector2(5884, 4076)
 
 [node name="portal_4" parent="Portals" index="4"]
 position = Vector2(5983, 564)
+
+[node name="portal_sprite_4" parent="Portals/portal_4" index="0"]
+position = Vector2(-293.375, -21.2496)
+scale = Vector2(9.80078, 11.2578)
+
+[node name="CollisionShape2D" parent="Portals/portal_4" index="1"]
+position = Vector2(-290, -17)
 
 [node name="destination_portal_4" parent="Portals/portal_4" index="2"]
 position = Vector2(-5567, -3596)

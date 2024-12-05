@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://bk8s8ithef4pb"]
+
+[ext_resource type="Script" path="res://scenes/pause_game.gd" id="1_rwymo"]
+
+[node name="Pause_game" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_rwymo")
+
+[node name="pause_resume" type="Button" parent="."]
+process_mode = 3
+offset_left = 944.0
+offset_top = 416.0
+offset_right = 1456.0
+offset_bottom = 543.0
+theme_override_font_sizes/font_size = 50
+text = "RESUME"
+
+[node name="pause_mainmenu" type="Button" parent="."]
+process_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -66.0
+offset_right = 256.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 50
+text = "MAIN MENU"
+
+[node name="pause_quit" type="Button" parent="."]
+process_mode = 3
+offset_left = 944.0
+offset_top = 800.0
+offset_right = 1456.0
+offset_bottom = 928.0
+theme_override_font_sizes/font_size = 50
+text = "QUIT"
+
+[connection signal="pressed" from="pause_resume" to="." method="_on_pause_resume_pressed"]
+[connection signal="pressed" from="pause_mainmenu" to="." method="_on_pause_mainmenu_pressed"]
+[connection signal="pressed" from="pause_quit" to="." method="_on_pause_quit_pressed"]

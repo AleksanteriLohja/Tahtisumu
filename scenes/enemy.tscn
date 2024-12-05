@@ -1,44 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://clb12rylqmee2"]
+[gd_scene load_steps=8 format=3 uid="uid://clb12rylqmee2"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_bh3bf"]
-[ext_resource type="Texture2D" uid="uid://c8nuoahfrc1b3" path="res://assets/grafiikka/green_32x16.png" id="2_25lh8"]
-[ext_resource type="Texture2D" uid="uid://b3n3t3b5e8nfd" path="res://assets/grafiikka/Effect and Bullet 16x16/Green Effect and Bullet 16x16.png" id="3_tn3h1"]
-[ext_resource type="AudioStream" uid="uid://cgm4k102mn88l" path="res://assets/äänet/8-bit-explosion-95847.mp3" id="4_tb1sv"]
+[ext_resource type="Texture2D" uid="uid://b55t6hh5sngu3" path="res://assets/grafiikka/yellow_16x16.png" id="2_wmyb2"]
+[ext_resource type="AudioStream" uid="uid://cyuucpohfsdwj" path="res://assets/äänet/explosion.mp3" id="3_yl0xv"]
 [ext_resource type="AudioStream" uid="uid://dee7a2qubh0ha" path="res://assets/äänet/game-over-arcade-6435.mp3" id="5_x5gbo"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_veelh"]
-atlas = ExtResource("3_tn3h1")
-region = Rect2(480, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s7rpg"]
-atlas = ExtResource("3_tn3h1")
-region = Rect2(496, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l86dl"]
-atlas = ExtResource("3_tn3h1")
-region = Rect2(512, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w88nf"]
-atlas = ExtResource("3_tn3h1")
-region = Rect2(528, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_uop4r"]
-atlas = ExtResource("3_tn3h1")
-region = Rect2(544, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gni4e"]
-atlas = ExtResource("3_tn3h1")
-region = Rect2(560, 16, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ayok0"]
-atlas = ExtResource("3_tn3h1")
-region = Rect2(560, 160, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_athg4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_25lh8")
+"texture": ExtResource("2_wmyb2")
 }],
 "loop": true,
 "name": &"idle",
@@ -46,25 +17,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_veelh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_s7rpg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l86dl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w88nf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uop4r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gni4e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ayok0")
+"texture": null
 }],
 "loop": false,
 "name": &"tuho",
@@ -72,10 +25,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqig"]
-size = Vector2(65, 36)
+size = Vector2(61, 51)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7dhl"]
-size = Vector2(68, 39)
+size = Vector2(67, 56)
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(-3, -2)
@@ -85,24 +38,26 @@ script = ExtResource("1_bh3bf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(33.25, 18.75)
-scale = Vector2(2.5, 2.731)
+rotation = 3.14159
+scale = Vector2(5, 5.462)
 sprite_frames = SubResource("SpriteFrames_athg4")
-animation = &"idle"
+animation = &"tuho"
 autoplay = "idle"
 
 [node name="CollisionEnemy" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(30.5, 20)
+position = Vector2(30, 19)
 shape = SubResource("RectangleShape2D_ysqig")
 
 [node name="EnemyTuho" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_tb1sv")
+stream = ExtResource("3_yl0xv")
+volume_db = -3.939
+pitch_scale = 1.51
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(30.25, 19.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.75, 0)
+position = Vector2(0.75, -0.5)
 shape = SubResource("RectangleShape2D_j7dhl")
 
 [node name="EnemyHit" type="AudioStreamPlayer" parent="."]

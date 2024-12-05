@@ -4,6 +4,7 @@ var speed : float = 350  #vihollisen nopeus
 var alive: bool 
 var rotation_speed = 40 #vihollisen kääntymisnopeus
 var item_scene := preload("res://scenes/item.tscn") #täältä tuodaan tiputettavat itemit
+var explosion_scene := preload("res://scenes/explosion.tscn")#pixeliräjähdys
 var DROP_CHANCE : float = 0.3 #itemien dropchance
 
 @onready var main = get_node("/root/main") #tuodaan main node jotta voidaan viitata siihen
@@ -15,6 +16,12 @@ signal hit_player
 
 func _ready():
 	alive = true
+	randomize_speed()
+	
+func randomize_speed():
+	var min_speed = 400
+	var max_speed = 650
+	speed = randi_range(min_speed, max_speed)	
 	
 	
 #viholliset liikkuvat aina pelaajan suntaan	
@@ -36,6 +43,10 @@ func die():
 	call_deferred("disable_collision")
 	if randf() <= DROP_CHANCE:
 		drop_item()
+	var explosion = explosion_scene.instantiate()
+	explosion.position = position
+	main.add_child(explosion)
+	explosion.process_mode = Node.PROCESS_MODE_ALWAYS
 
 #tämä hallitsee esineiden tiputtamista	
 func drop_item():

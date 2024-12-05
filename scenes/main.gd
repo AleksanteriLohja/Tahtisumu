@@ -32,6 +32,7 @@ func reset():
 	$Hud/WaveLabel.text = "WAVE: "+ str(wave)
 	$Hud/EnemiesLabel.text = "ENEMIES: "+ str(max_enemies)
 	$GameOver.hide()
+	$Pause_game.hide()
 	get_tree().paused = false
 	
 
@@ -50,6 +51,9 @@ func _process(_delta):
 		$Hud/WaveCompletedLabel.text = ""
 		reset()
 		timer_started = false
+	if Input.is_action_just_pressed("pause"):
+		get_tree().paused = true
+		$Pause_game.show()
 		
 #vähentaa pelaajan hp määrää kun vihollinen osuu pelaajaan
 func _on_enemy_spawner_hit_p() -> void:

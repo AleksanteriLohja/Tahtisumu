@@ -294,8 +294,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dmiqx"]
-radius = 54.0
-height = 124.0
+radius = 37.0
+height = 98.0
 
 [node name="player" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
@@ -313,16 +313,24 @@ animation = &"idle"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.5, 0.5)
+zoom = Vector2(0.4, 0.4)
 limit_left = 0
 limit_top = 0
 limit_right = 8500
 limit_bottom = 5700
 
 [node name="MoottoriLiike" type="AnimatedSprite2D" parent="."]
-position = Vector2(-38, -1.60845e-06)
+position = Vector2(-59, -29)
 rotation = -1.5708
-scale = Vector2(2.16403, 1.18088)
+scale = Vector2(1.66797, 1.50332)
+sprite_frames = SubResource("SpriteFrames_qg6om")
+animation = &"MoottoriLiike"
+autoplay = "MoottoriLiike"
+
+[node name="MoottoriLiike2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-59, 30)
+rotation = -1.5708
+scale = Vector2(1.66797, 1.50332)
 sprite_frames = SubResource("SpriteFrames_qg6om")
 animation = &"MoottoriLiike"
 autoplay = "MoottoriLiike"
@@ -357,7 +365,7 @@ wait_time = 0.316
 
 [node name="AlusAmpuminen" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_3p7t3")
-volume_db = -12.263
+volume_db = -19.046
 
 [node name="BoostTimer" type="Timer" parent="."]
 wait_time = 8.0
@@ -368,6 +376,7 @@ wait_time = 10.824
 one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-14, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_dmiqx")
