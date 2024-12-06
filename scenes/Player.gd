@@ -16,8 +16,9 @@ var fade_out_speed:float = 0.5 #hidastus äänen feidaus
 
 # Dash variables
 var is_dashing: bool = false
-var dash_speed: float = 8000
-var dash_duration: float = 0.7
+var dash_speed: float = 80000
+var dash_acceleration = acceleration*1.5
+var dash_duration: float = 0.5
 var dash_timer: float = 0.0
 var can_dash: bool = true
 var dash_cooldown: float = 3.0
