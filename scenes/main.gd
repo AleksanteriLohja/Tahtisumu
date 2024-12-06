@@ -1,7 +1,7 @@
 extends Node
 var wave : int
 var difficulty : float
-const DIFF_MULTIPLIER : float = 1.5 #kerroin sille kuinka nopeasti pelistä tulee vaikeampi, esim 1.5 kertaa vihollisten määrä seuraavaan aaltoon
+const DIFF_MULTIPLIER : float = 1.3 #kerroin sille kuinka nopeasti pelistä tulee vaikeampi, esim 1.5 kertaa vihollisten määrä seuraavaan aaltoon
 var max_enemies: int
 var lives : int
 var timer_started = false
@@ -18,8 +18,8 @@ func _ready() -> void:
 func new_game():
 	wave = 1
 	lives = 2
-	difficulty = 6
-	max_enemies = 4
+	difficulty = 8
+	max_enemies = 8
 	reset()
 	
 func reset():
@@ -41,9 +41,10 @@ func reset():
 #tässä hallitaann mitä tapahtuu aaltojen välissä
 func _process(_delta):
 	if is_wave_completed() and not timer_started:
+		$WaveClearedSound.play()
 		wave += 1
 		difficulty *= DIFF_MULTIPLIER
-		pitch_scale += 0.01
+		pitch_scale += 0.02
 		music_player.pitch_scale = pitch_scale
 		timer_started = true
 		$Hud/WaveCompletedLabel.text = "WAVE COMPLETED"

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cfjctk861imqa"
+path="res://.godot/imported/rapid fire.wav-85141aa2668abdb7062183081920497c.sample"
+
+[deps]
+
+source_file="res://assets/äänet/rapid fire.wav"
+dest_files=["res://.godot/imported/rapid fire.wav-85141aa2668abdb7062183081920497c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

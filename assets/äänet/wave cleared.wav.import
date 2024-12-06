@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgf3f455knayw"
+path="res://.godot/imported/wave cleared.wav-c4407cccd18f387cb7221eda37d0b530.sample"
+
+[deps]
+
+source_file="res://assets/äänet/wave cleared.wav"
+dest_files=["res://.godot/imported/wave cleared.wav-c4407cccd18f387cb7221eda37d0b530.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

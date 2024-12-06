@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://2kuiqqfnh7f5"]
+[gd_scene load_steps=16 format=3 uid="uid://2kuiqqfnh7f5"]
 
 [ext_resource type="PackedScene" uid="uid://c2c41fkp61tul" path="res://scenes/world.tscn" id="1_807yc"]
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_dhvq7"]
@@ -12,7 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://bk8s8ithef4pb" path="res://scenes/pause_game.tscn" id="9_s52f5"]
 [ext_resource type="PackedScene" uid="uid://y2niwpg457dv" path="res://scenes/portal.tscn" id="10_dn233"]
 [ext_resource type="AudioStream" uid="uid://dee7a2qubh0ha" path="res://assets/äänet/game-over-arcade-6435.mp3" id="11_6i832"]
-[ext_resource type="AudioStream" uid="uid://dxvcev4bqwcjv" path="res://assets/äänet/game-over-31-179699.mp3" id="11_d8yoc"]
+[ext_resource type="AudioStream" uid="uid://72ofm4eocu7n" path="res://assets/äänet/game over.wav" id="12_b0jll"]
+[ext_resource type="AudioStream" uid="uid://dgf3f455knayw" path="res://assets/äänet/wave cleared.wav" id="14_gmq5x"]
+[ext_resource type="PackedScene" uid="uid://b1hs22nx2xbin" path="res://scenes/item.tscn" id="15_3u6d0"]
 
 [node name="main" type="Node"]
 script = ExtResource("1_dhvq7")
@@ -94,10 +96,15 @@ position = Vector2(-290, -17)
 position = Vector2(-5567, -3596)
 
 [node name="GameOverSound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_d8yoc")
+stream = ExtResource("12_b0jll")
 
 [node name="EnemyHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_6i832")
+
+[node name="WaveClearedSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gmq5x")
+
+[node name="Item" parent="." instance=ExtResource("15_3u6d0")]
 
 [connection signal="shoot" from="player" to="BulletManager" method="_on_player_shoot"]
 [connection signal="hit_p" from="EnemySpawner" to="." method="_on_enemy_spawner_hit_p"]

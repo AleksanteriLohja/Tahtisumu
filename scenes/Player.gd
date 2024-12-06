@@ -6,13 +6,22 @@ const NORMAL_SHOT : float = 0.3
 const FAST_SHOT : float = 0.1
 
 var can_shoot :  bool
-var speed = 700
-var acceleration: float = 1000 #kiihdytyksen nopeus
-var max_speed: float = 700 #kiihdytyksen käyttämä maksimivauhti
+var speed = 600
+var acceleration: float = 3000 #kiihdytyksen nopeus
+var max_speed: float = 800 #kiihdytyksen käyttämä maksimivauhti
 var BOOST_SPEED = max_speed*1.5
 var friction: float =  600#hidastukseen vaikuttava kitka
 var rotation_speed: float = 4.0  # Määritellään rotaation nopeus
 var fade_out_speed:float = 0.5 #hidastus äänen feidaus
+
+# Dash variables
+var is_dashing: bool = false
+var dash_speed: float = 8000
+var dash_duration: float = 0.7
+var dash_timer: float = 0.0
+var can_dash: bool = true
+var dash_cooldown: float = 3.0
+var dash_cooldown_timer: float = 0.0  # Track remaining cooldown time
 
 @onready var Vahinko_sprite: AnimatedSprite2D = $AlusVahinko #vahinko animaatio
 @onready var Liike_sprite: AnimatedSprite2D = $MoottoriLiike #moottorin tulianimaatio
@@ -23,19 +32,28 @@ var fade_out_speed:float = 0.5 #hidastus äänen feidaus
 @onready var Ampuminen_audio: AudioStreamPlayer = $AlusAmpuminen #ampumisen ääni
 @onready var animated_sprite = $Alus
 @onready var gun_sound= $gun_boost
+@onready var DashCooldownTimer: Timer = $ShieldTimer
+@onready var Shield: Area2D = $Shield  # Reference to the shield node
+@onready var DashCDProgressBar: ProgressBar = $"/root/main/Hud/DashCdProgressBar" #dash cd progress bar reference
 
 func _ready():#kutsuu reset funktion jossa on kaikki tarvittava pelin aloitukseen
 	reset()
+	DashCDProgressBar.max_value = dash_cooldown
+	DashCDProgressBar.value = dash_cooldown
 
 func reset():
 	animated_sprite.play("idle")
 	$gun_boost.stop()
 	max_speed = 700
 	can_shoot = true
+	can_dash = true
 	position = Vector2(4200, 2700) #pelaajan aloitus paikka, koordinaatit x,y
 	print("player reset")
 	$ShotTimer.wait_time = NORMAL_SHOT	
-
+	Shield.visible = false  # Ensure shield is initially hidden
+	DashCDProgressBar.value = dash_cooldown
+	dash_cooldown_timer = 0.0 # Reset cooldown timer
+	
 func get_input(delta):
 	# Keyboard input
 	var input_dir = Vector2()
@@ -81,6 +99,9 @@ func get_input(delta):
 		can_shoot = false
 		#timer säätää kuinka nopeasti voi ampua
 		$ShotTimer.start()
+		
+	if Input.is_action_just_pressed("dash") and can_dash and not is_dashing:
+		start_dash()	
 	
 	# Kiihdytyksen halinta
 	if input_dir != Vector2():
@@ -103,12 +124,50 @@ func _physics_process(delta):
 	get_input(delta)
 	move_and_slide()
 	
+	if is_dashing:
+		dash_timer -= delta
+		if dash_timer <= 0:
+			end_dash()
+			
+	if not can_dash:
+		dash_cooldown_timer -= delta
+		DashCDProgressBar.value = dash_cooldown - dash_cooldown_timer
+		print("Cooldown Timer: ", dash_cooldown_timer)  # Debug print
+		if dash_cooldown_timer <= 0:	
+			can_dash = true
+			DashCDProgressBar.value = dash_cooldown  # Reset the progress bar to full
+			
 	# Player rotation hallinta hiirellä
 	var mouse = get_local_mouse_position()
 	look_at(to_global(mouse))
+	
+func start_dash():	
+	is_dashing = true
+	dash_timer = dash_duration
+	max_speed = dash_speed
+	can_dash = false
+	dash_cooldown_timer = dash_cooldown
+	Shield.visible = true  # Activate shield
+	DashCDProgressBar.value = 0 #reset cd progress bardw
 
+func end_dash():
+	is_dashing = false
+	max_speed = speed
+	Shield.visible = false  # Deactivate shield
+	
+func _on_shield_timer_timeout() -> void:
+	can_dash = true
+	DashCDProgressBar.value = dash_cooldown #progress bar reset
+	
+func _on_shield_body_entered(body: Node2D) -> void:
+	if is_dashing:
+		#Handle collision with enemies while dashing
+		if body.is_in_group("enemies"):
+			body.die()
+			
 #nostaa pelaajan vauhtia timerin määrittämäksi ajaksi	
 func boost():
+	$speed.play()
 	animated_sprite.play(("boost"))
 	$BoostTimer.start()
 	max_speed = BOOST_SPEED
@@ -123,6 +182,7 @@ func _on_boost_timer_timeout() -> void:
 	Alus_audioEteen.pitch_scale = 1.0
 
 func quick_fire():
+	$rapidfire.play()
 	gun_sound.play()
 	$"../Taustamusiikki".stop()
 	animated_sprite.play(("gun"))

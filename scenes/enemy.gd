@@ -5,10 +5,11 @@ var alive: bool
 var rotation_speed = 40 #vihollisen kääntymisnopeus
 var item_scene := preload("res://scenes/item.tscn") #täältä tuodaan tiputettavat itemit
 var explosion_scene := preload("res://scenes/explosion.tscn")#pixeliräjähdys
-var DROP_CHANCE : float = 0.3 #itemien dropchance
+var DROP_CHANCE : float = 0.2 #itemien dropchance
 
 @onready var main = get_node("/root/main") #tuodaan main node jotta voidaan viitata siihen
 @onready var player = get_node("/root/main/player") #tuodaan player node jotta voidaan viitata siihen
+@onready var player_shield = get_node("/root/main/player/Shield")
 @onready var animated_sprite = $AnimatedSprite2D #tuodaan animaatio	
 @onready var audio_tuho = $EnemyTuho #tuodaan audio
 
@@ -19,8 +20,8 @@ func _ready():
 	randomize_speed()
 	
 func randomize_speed():
-	var min_speed = 400
-	var max_speed = 650
+	var min_speed = 350
+	var max_speed = 550
 	speed = randi_range(min_speed, max_speed)	
 	
 	
@@ -63,7 +64,7 @@ func disable_collision():
 	#queue_free()
 
 #toistetaan signaali kun vihollinen osuu pelaajaan
-func _on_area_2d_body_entered(_body):
+func _on_area_2d_body_entered(body):
 	$EnemyHit.play()
 	$EnemyTuho.play()
 	hit_player.emit()
