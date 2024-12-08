@@ -5,6 +5,7 @@ extends Node2D
 signal hit_p
 
 var enemy_scene := preload("res://scenes/enemy.tscn")
+var enemy_scene2 := preload("res://scenes/enemy_2.tscn")
 var spawn_points :=[]
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,7 +21,11 @@ func _on_timer_timeout() -> void:
 	#pick random spawnpoint
 		var spawn = spawn_points[randi() % spawn_points.size()]
 	#spawn enemy
-		var enemy = enemy_scene.instantiate()
+		var enemy
+		if randi() % 100 < 20: #spawn chance for enemy2
+			enemy = enemy_scene2.instantiate()
+		else:
+			enemy = enemy_scene.instantiate()
 		enemy.position = spawn.position
 		enemy.hit_player.connect(hit)
 		main.add_child(enemy)

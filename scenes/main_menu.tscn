@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnee8jlp3k4e3"]
+[gd_scene load_steps=10 format=3 uid="uid://cnee8jlp3k4e3"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_ivkfg"]
 [ext_resource type="Texture2D" uid="uid://hoyy2lwuxgl4" path="res://assets/grafiikka/taustat/sfsfasfasdf.png" id="2_jnsuo"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cpes7xt73plp8" path="res://assets/grafiikka/Keyboard Letters and Symbols.png" id="4_ahjkx"]
 [ext_resource type="Texture2D" uid="uid://kxwu5vjsw104" path="res://assets/grafiikka/items/bullets.png" id="5_vpn4f"]
 [ext_resource type="Texture2D" uid="uid://bp27dsjfr7emy" path="res://assets/grafiikka/items/health.png" id="6_hi1x0"]
+[ext_resource type="Texture2D" uid="uid://dho871yktpgiv" path="res://Moon/2.png" id="7_unwng"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vxj7b"]
 texture = ExtResource("4_ahjkx")
@@ -231,6 +232,10 @@ texture = ExtResource("5_vpn4f")
 position = Vector2(544, 784)
 scale = Vector2(2.7, 2.5)
 texture = ExtResource("6_hi1x0")
+
+[node name="2" type="Sprite2D" parent="."]
+position = Vector2(1176, 640)
+texture = ExtResource("7_unwng")
 
 [connection signal="pressed" from="NewGame1" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

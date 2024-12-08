@@ -1,21 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1hs22nx2xbin"]
+[gd_scene load_steps=4 format=3 uid="uid://b1hs22nx2xbin"]
 
 [ext_resource type="Script" path="res://scenes/item.gd" id="1_vb465"]
+[ext_resource type="Texture2D" uid="uid://bp27dsjfr7emy" path="res://assets/grafiikka/items/health.png" id="2_onnrw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51vlr"]
-size = Vector2(27.5269, 25.3333)
+size = Vector2(59.1828, 57.3333)
 
 [node name="Item" type="Area2D"]
 collision_layer = 16
 script = ExtResource("1_vb465")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-2.38419e-07, 0.5)
+position = Vector2(1.5, -0.5)
 scale = Vector2(0.726563, 0.75)
 shape = SubResource("RectangleShape2D_51vlr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.375, -0.5)
 scale = Vector2(2.3375, 2.1875)
+
+[node name="Health" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+texture = ExtResource("2_onnrw")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

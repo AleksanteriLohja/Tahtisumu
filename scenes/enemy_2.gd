@@ -4,8 +4,9 @@ var speed : float = 350  #vihollisen nopeus
 var alive: bool 
 var rotation_speed = 40 #vihollisen kääntymisnopeus
 var item_scene := preload("res://scenes/item.tscn") #täältä tuodaan tiputettavat itemit
-var explosion_scene := preload("res://scenes/explosion.tscn")#pixeliräjähdys
-var DROP_CHANCE : float = 0 #itemien dropchance
+var explosion_scene := preload("res://scenes/explosion_2.tscn")#pixeliräjähdys
+var DROP_CHANCE : float = 1.0 #itemien dropchance
+var health: int = 5
 
 @onready var main = get_node("/root/main") #tuodaan main node jotta voidaan viitata siihen
 @onready var player = get_node("/root/main/player") #tuodaan player node jotta voidaan viitata siihen
@@ -33,8 +34,12 @@ func _physics_process(_delta):
 		velocity = direction*speed
 		look_at(player.global_position)
 		move_and_slide()
+	
+	if health <= 0 and alive:
+			die()
 	else:
 		pass	
+	
 		
 #vihollinen pysähtyy, animaatio toistetaan ja node poistetaan
 func die():
@@ -60,22 +65,22 @@ func drop_item():
 	item.add_to_group("items") #luodaan ryhmä ja lisätään luodut itemit ryhmään
 	
 func disable_collision():
-	$CollisionEnemy.disabled = true
+	$CollisionShape2D.disabled = true
 	$Area2D/CollisionShape2D.disabled = true
 #func _on_enemy_death_timer_timeout() -> void: #tämä poistaa vihollisen
 	#queue_free()
 
 #toistetaan signaali kun vihollinen osuu pelaajaan
-func _on_area_2d_body_entered(body):
-	if body.name == "player":
-		$EnemyHit.play()
-		$EnemyTuho.play()
-		hit_player.emit()
-		for enemy in get_tree().get_nodes_in_group("enemies"):
-			enemy.call_deferred("disable_collision")
-
+func _on_area_2d_body_entered(_body):
+	$EnemyHit.play()
+	$EnemyTuho.play()
+	hit_player.emit()
+	for enemy in get_tree().get_nodes_in_group("enemies"):
+		enemy.call_deferred("disable_collision")
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
-		die()
+		$BulletHit.play()
+		health -= 1
+		print(health)
