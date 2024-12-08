@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://clb12rylqmee2"]
+[gd_scene load_steps=9 format=3 uid="uid://clb12rylqmee2"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_bh3bf"]
 [ext_resource type="Texture2D" uid="uid://b55t6hh5sngu3" path="res://assets/grafiikka/yellow_16x16.png" id="2_wmyb2"]
 [ext_resource type="AudioStream" uid="uid://ccrp5wnd34rqg" path="res://assets/äänet/lo-fi-explosion-fx_F_minor.wav" id="3_cftf7"]
+[ext_resource type="AudioStream" uid="uid://ccs7ps4ka286s" path="res://assets/äänet/enemy-encounter-225560.mp3" id="5_hekpq"]
 [ext_resource type="AudioStream" uid="uid://dee7a2qubh0ha" path="res://assets/äänet/game-over-arcade-6435.mp3" id="5_x5gbo"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_athg4"]
@@ -24,11 +25,11 @@ animations = [{
 "speed": 11.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ysqig"]
-size = Vector2(61, 51)
+[sub_resource type="CircleShape2D" id="CircleShape2D_x6x1q"]
+radius = 30.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7dhl"]
-size = Vector2(67, 56)
+size = Vector2(75, 66)
 
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(-3, -2)
@@ -39,16 +40,16 @@ script = ExtResource("1_bh3bf")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(33.25, 18.75)
 rotation = 3.14159
-scale = Vector2(5, 5.462)
+scale = Vector2(5.492, 6)
 sprite_frames = SubResource("SpriteFrames_athg4")
-animation = &"tuho"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionEnemy" type="CollisionShape2D" parent="."]
 position = Vector2(30, 19)
-shape = SubResource("RectangleShape2D_ysqig")
+shape = SubResource("CircleShape2D_x6x1q")
 
-[node name="EnemyTuho" type="AudioStreamPlayer" parent="."]
+[node name="EnemyTuho" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cftf7")
 volume_db = -11.475
 pitch_scale = 1.51
@@ -57,10 +58,17 @@ pitch_scale = 1.51
 position = Vector2(30.25, 19.5)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0.75, -0.5)
+position = Vector2(0.25, -0.5)
 shape = SubResource("RectangleShape2D_j7dhl")
 
 [node name="EnemyHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_x5gbo")
+
+[node name="EnemySound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_hekpq")
+volume_db = -1.575
+autoplay = true
+max_distance = 800.0
+parameters/looping = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

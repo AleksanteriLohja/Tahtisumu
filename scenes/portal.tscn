@@ -195,13 +195,13 @@ position = Vector2(384, 202)
 script = ExtResource("1_m5gy7")
 
 [node name="portal_sprite_1" type="AnimatedSprite2D" parent="Portal_1"]
-position = Vector2(808, 499)
+position = Vector2(7, 0.615997)
 scale = Vector2(10, 10.488)
 sprite_frames = SubResource("SpriteFrames_djury")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Portal_1"]
-position = Vector2(801, 499)
+position = Vector2(0, 0.615997)
 shape = SubResource("CircleShape2D_t23q7")
 
 [node name="destination_portal_1" type="Marker2D" parent="Portal_1"]

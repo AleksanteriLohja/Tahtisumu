@@ -11,20 +11,19 @@ var acceleration: float = 3000 #kiihdytyksen nopeus
 var max_speed: float = 800 #kiihdytyksen käyttämä maksimivauhti
 var BOOST_SPEED = max_speed*1.5
 var friction: float =  600#hidastukseen vaikuttava kitka
-var rotation_speed: float = 4.0  # Määritellään rotaation nopeus
+var rotation_speed: float = 6  # Määritellään rotaation nopeus
 var fade_out_speed:float = 0.5 #hidastus äänen feidaus
 
 # Dash variables
 var is_dashing: bool = false
 var dash_speed: float = 80000
-var dash_acceleration = acceleration*1.5
+var dash_acceleration = acceleration*2
 var dash_duration: float = 0.5
 var dash_timer: float = 0.0
 var can_dash: bool = true
-var dash_cooldown: float = 3.0
+var dash_cooldown: float = 7.0
 var dash_cooldown_timer: float = 0.0  # Track remaining cooldown time
 
-@onready var Vahinko_sprite: AnimatedSprite2D = $AlusVahinko #vahinko animaatio
 @onready var Liike_sprite: AnimatedSprite2D = $MoottoriLiike #moottorin tulianimaatio
 @onready var Liike_sprite2: AnimatedSprite2D = $MoottoriLiike2 #moottorin tulianimaatio
 @onready var Idle_sprite: AnimatedSprite2D = $MoottoriIdle #moottorin idelanimaatio
@@ -49,7 +48,6 @@ func reset():
 	can_shoot = true
 	can_dash = true
 	position = Vector2(4200, 2700) #pelaajan aloitus paikka, koordinaatit x,y
-	print("player reset")
 	$ShotTimer.wait_time = NORMAL_SHOT	
 	Shield.visible = false  # Ensure shield is initially hidden
 	DashCDProgressBar.value = dash_cooldown
@@ -114,7 +112,6 @@ func get_input(delta):
 		velocity = velocity.move_toward(Vector2(), friction * delta)
 		Liike_sprite.visible = false
 		Liike_sprite2.visible = false
-		Vahinko_sprite.visible = false
 		if Alus_audioEteen.is_playing():
 			Alus_audioEteen.volume_db = lerp(Alus_audioEteen.volume_db,-80.0,fade_out_speed*delta)
 		elif Alus_audioTaakse.is_playing():
@@ -133,7 +130,6 @@ func _physics_process(delta):
 	if not can_dash:
 		dash_cooldown_timer -= delta
 		DashCDProgressBar.value = dash_cooldown - dash_cooldown_timer
-		print("Cooldown Timer: ", dash_cooldown_timer)  # Debug print
 		if dash_cooldown_timer <= 0:	
 			can_dash = true
 			DashCDProgressBar.value = dash_cooldown  # Reset the progress bar to full
@@ -143,9 +139,11 @@ func _physics_process(delta):
 	look_at(to_global(mouse))
 	
 func start_dash():	
+	$DashSound.play()
 	is_dashing = true
 	dash_timer = dash_duration
 	max_speed = dash_speed
+	acceleration = dash_acceleration
 	can_dash = false
 	dash_cooldown_timer = dash_cooldown
 	Shield.visible = true  # Activate shield
@@ -155,6 +153,7 @@ func end_dash():
 	is_dashing = false
 	max_speed = speed
 	Shield.visible = false  # Deactivate shield
+	acceleration = dash_acceleration
 	
 func _on_shield_timer_timeout() -> void:
 	can_dash = true
@@ -167,20 +166,20 @@ func _on_shield_body_entered(body: Node2D) -> void:
 			body.die()
 			
 #nostaa pelaajan vauhtia timerin määrittämäksi ajaksi	
-func boost():
-	$speed.play()
-	animated_sprite.play(("boost"))
-	$BoostTimer.start()
-	max_speed = BOOST_SPEED
-	Alus_audioEteen.pitch_scale = 1.2
+#func boost():
+	#$speed.play()
+	#animated_sprite.play(("boost"))
+	#$BoostTimer.start()
+	#max_speed = BOOST_SPEED
+	#Alus_audioEteen.pitch_scale = 1.2
 
 	
 
 #palauttaa vauhdin normaaliksi	
-func _on_boost_timer_timeout() -> void:
-	animated_sprite.play(("idle"))
-	max_speed = speed
-	Alus_audioEteen.pitch_scale = 1.0
+#func _on_boost_timer_timeout() -> void:
+	#animated_sprite.play(("idle"))
+	#max_speed = speed
+	#Alus_audioEteen.pitch_scale = 1.0
 
 func quick_fire():
 	$rapidfire.play()

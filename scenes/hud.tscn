@@ -47,7 +47,7 @@ vertical_alignment = 1
 
 [node name="AlusAlas" type="Sprite2D" parent="LivesLabel"]
 position = Vector2(-56, 48)
-scale = Vector2(6.25, 6.75)
+scale = Vector2(3, 3.24)
 texture = ExtResource("1_4njqx")
 
 [node name="WaveLabel" type="Label" parent="."]

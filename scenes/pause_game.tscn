@@ -6,6 +6,20 @@
 process_mode = 3
 script = ExtResource("1_rwymo")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -336.0
+offset_top = -336.0
+offset_right = 336.0
+offset_bottom = 336.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.370364, 0.370364, 0.370364, 1)
+
 [node name="pause_resume" type="Button" parent="."]
 process_mode = 3
 offset_left = 944.0
@@ -40,6 +54,10 @@ offset_right = 1456.0
 offset_bottom = 928.0
 theme_override_font_sizes/font_size = 50
 text = "QUIT"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="pause_resume" to="." method="_on_pause_resume_pressed"]
 [connection signal="pressed" from="pause_mainmenu" to="." method="_on_pause_mainmenu_pressed"]

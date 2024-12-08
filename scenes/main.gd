@@ -29,8 +29,8 @@ func reset():
 	get_tree().call_group("bullet", "queue_free")
 	get_tree().call_group("items", "queue_free")
 	$Hud/LivesLabel.text = "X "+ str(lives)
-	$Hud/WaveLabel.text = "WAVE: "+ str(wave)
-	$Hud/EnemiesLabel.text = "ENEMIES: "+ str(max_enemies)
+	$Hud/WaveLabel.text = "WAVE:"+ str(wave)
+	$Hud/EnemiesLabel.text = "ENEMIES:"+ str(max_enemies)
 	$GameOver.hide()
 	$Pause_game.hide()
 	get_tree().paused = false
@@ -47,7 +47,7 @@ func _process(_delta):
 		pitch_scale += 0.02
 		music_player.pitch_scale = pitch_scale
 		timer_started = true
-		$Hud/WaveCompletedLabel.text = "WAVE COMPLETED"
+		$Hud/WaveCompletedLabel.text = "WAVE CLEARED"
 		await get_tree().create_timer(4.0).timeout #kauanko kestää että kutsutaan reset ja siirrytään seuraavaan aaltoon kun kaikki viholliset on tuhottu
 		$Hud/WaveCompletedLabel.text = ""
 		reset()

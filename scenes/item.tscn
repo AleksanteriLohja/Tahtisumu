@@ -1,9 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1hs22nx2xbin"]
+[gd_scene load_steps=3 format=3 uid="uid://b1hs22nx2xbin"]
 
 [ext_resource type="Script" path="res://scenes/item.gd" id="1_vb465"]
-[ext_resource type="AudioStream" uid="uid://drehrs2ccel1e" path="res://assets/äänet/extra life.wav" id="2_ds7f8"]
-[ext_resource type="AudioStream" uid="uid://cfjctk861imqa" path="res://assets/äänet/rapid fire.wav" id="3_4q3ou"]
-[ext_resource type="AudioStream" uid="uid://c7ihsmn2lqpm6" path="res://assets/äänet/speed boost.wav" id="4_lev5j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_51vlr"]
 size = Vector2(27.5269, 25.3333)
@@ -20,14 +17,5 @@ shape = SubResource("RectangleShape2D_51vlr")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-0.375, -0.5)
 scale = Vector2(2.3375, 2.1875)
-
-[node name="health" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_ds7f8")
-
-[node name="rapidfire" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_4q3ou")
-
-[node name="speed" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_lev5j")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -17,6 +17,7 @@ signal hit_player
 
 func _ready():
 	alive = true
+	$EnemySound.play()
 	randomize_speed()
 	
 func randomize_speed():
@@ -38,6 +39,7 @@ func _physics_process(_delta):
 #vihollinen pysähtyy, animaatio toistetaan ja node poistetaan
 func die():
 	alive = false
+	$EnemySound.stop()
 	audio_tuho.play()
 	animated_sprite.play("tuho")
 	#$EnemyDeathTimer.start() #tämä määrittää kuoleman viiveen jotta animaatio ehtii toistua
@@ -53,7 +55,7 @@ func die():
 func drop_item():
 	var item = item_scene.instantiate()
 	item.position = position #esineen paikka
-	item.item_type = randi_range(0,2)
+	item.item_type = randi_range(0,1)
 	main.call_deferred("add_child", item)
 	item.add_to_group("items") #luodaan ryhmä ja lisätään luodut itemit ryhmään
 	
@@ -64,7 +66,7 @@ func disable_collision():
 	#queue_free()
 
 #toistetaan signaali kun vihollinen osuu pelaajaan
-func _on_area_2d_body_entered(body):
+func _on_area_2d_body_entered(_body):
 	$EnemyHit.play()
 	$EnemyTuho.play()
 	hit_player.emit()

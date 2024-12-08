@@ -5,6 +5,9 @@ extends Area2D
 @onready var player_collision = player.get_node("CollisionShape2D")
 @onready var teleport_sound = $"../AudioStreamPlayer2D"
 
+func ready():
+	$PortalHum.play()
+
 func teleport_player(target_position: Vector2):
 	player_collision.set_deferred("disabled", true)
 	player.visible = false #pelaaja on näkymätön teleportin ajan
