@@ -7,7 +7,7 @@ const FAST_SHOT : float = 0.1
 
 var can_shoot :  bool
 var speed = 600
-var acceleration: float = 3000 #kiihdytyksen nopeus
+var acceleration: float = 2500 #kiihdytyksen nopeus
 var max_speed: float = 800 #kiihdytyksen käyttämä maksimivauhti
 var BOOST_SPEED = max_speed*1.5
 var friction: float =  600#hidastukseen vaikuttava kitka
@@ -65,7 +65,7 @@ func get_input(delta):
 		if not Alus_audioEteen.is_playing():
 			#toistaa äänitehosteen
 			Alus_audioEteen.play()
-			Alus_audioEteen.volume_db = -20
+			Alus_audioEteen.volume_db = -10
 		
 	if Input.is_action_pressed("down"):
 		#liikuttaa pelaajaa kursorista päinvastaiseen suuntaan
@@ -73,21 +73,21 @@ func get_input(delta):
 		if not Alus_audioEteen.is_playing():
 			#toistaa äänitehosteen
 			Alus_audioEteen.play()
-			Alus_audioEteen.volume_db = -20
+			Alus_audioEteen.volume_db = -10
 		
 	if Input.is_action_pressed("left"):
 		input_dir.x -= 1
 		if not Alus_audioEteen.is_playing():
 			#toistaa äänitehosteen
 			Alus_audioEteen.play()
-			Alus_audioEteen.volume_db = -20
+			Alus_audioEteen.volume_db = -10
 	
 	if Input.is_action_pressed("right"):
 		input_dir.x += 1
 		if not Alus_audioEteen.is_playing():
 			#toistaa äänitehosteen
 			Alus_audioEteen.play()
-			Alus_audioEteen.volume_db = -20
+			Alus_audioEteen.volume_db = -10
 		
 		
 		#shooting with mouse

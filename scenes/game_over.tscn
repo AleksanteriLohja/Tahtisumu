@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhrawrxps6vkw"]
+[gd_scene load_steps=4 format=3 uid="uid://bhrawrxps6vkw"]
 
 [ext_resource type="Script" path="res://scenes/game_over.gd" id="1_mo72j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yq6m6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ldlfm"]
 
 [node name="GameOver" type="CanvasLayer"]
 script = ExtResource("1_mo72j")
@@ -52,6 +56,7 @@ offset_bottom = -582.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_yq6m6")
 text = "PLAY AGAIN"
 
 [node name="Menu" type="Button" parent="."]
@@ -67,6 +72,7 @@ offset_bottom = -390.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ldlfm")
 text = "MAIN MENU"
 
 [connection signal="pressed" from="Menu" to="." method="_on_menu_pressed"]

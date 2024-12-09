@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnee8jlp3k4e3"]
+[gd_scene load_steps=30 format=3 uid="uid://cnee8jlp3k4e3"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_ivkfg"]
 [ext_resource type="Texture2D" uid="uid://hoyy2lwuxgl4" path="res://assets/grafiikka/taustat/sfsfasfasdf.png" id="2_jnsuo"]
@@ -6,7 +6,15 @@
 [ext_resource type="Texture2D" uid="uid://cpes7xt73plp8" path="res://assets/grafiikka/Keyboard Letters and Symbols.png" id="4_ahjkx"]
 [ext_resource type="Texture2D" uid="uid://kxwu5vjsw104" path="res://assets/grafiikka/items/bullets.png" id="5_vpn4f"]
 [ext_resource type="Texture2D" uid="uid://bp27dsjfr7emy" path="res://assets/grafiikka/items/health.png" id="6_hi1x0"]
-[ext_resource type="Texture2D" uid="uid://dho871yktpgiv" path="res://Moon/2.png" id="7_unwng"]
+[ext_resource type="Texture2D" uid="uid://3k3klq8ewxxs" path="res://assets/grafiikka/Pixel Art Animated Portal/sprite-sheet – kopio.png" id="7_4ccju"]
+[ext_resource type="Texture2D" uid="uid://0d17px1tejgt" path="res://assets/grafiikka/Pixel Art Animated Portal/sprite-sheet.png" id="8_mul1l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dyd7o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rgtbb"]
+
+[sub_resource type="Theme" id="Theme_fcgdd"]
+Button/styles/normal = SubResource("StyleBoxFlat_rgtbb")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vxj7b"]
 texture = ExtResource("4_ahjkx")
@@ -122,6 +130,120 @@ texture = ExtResource("4_ahjkx")
 [sub_resource type="TileSet" id="TileSet_2tx4e"]
 sources/0 = SubResource("TileSetAtlasSource_vxj7b")
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkjxj"]
+atlas = ExtResource("7_4ccju")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v180k"]
+atlas = ExtResource("7_4ccju")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klawu"]
+atlas = ExtResource("7_4ccju")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_473e5"]
+atlas = ExtResource("7_4ccju")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpbll"]
+atlas = ExtResource("7_4ccju")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rge1d"]
+atlas = ExtResource("7_4ccju")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6l7hm"]
+atlas = ExtResource("7_4ccju")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4rg55"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkjxj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v180k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klawu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_473e5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpbll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rge1d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6l7hm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ichun"]
+atlas = ExtResource("8_mul1l")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8exd"]
+atlas = ExtResource("8_mul1l")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd2f0"]
+atlas = ExtResource("8_mul1l")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1g1o3"]
+atlas = ExtResource("8_mul1l")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nugd"]
+atlas = ExtResource("8_mul1l")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3uokm"]
+atlas = ExtResource("8_mul1l")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r1ec"]
+atlas = ExtResource("8_mul1l")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c2exj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ichun")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8exd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd2f0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1g1o3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nugd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3uokm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r1ec")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="MainMenu" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_ivkfg")
@@ -146,6 +268,7 @@ offset_bottom = 640.0
 grow_vertical = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_dyd7o")
 text = "NEW GAME"
 
 [node name="Quit" type="Button" parent="."]
@@ -158,6 +281,7 @@ offset_right = 1448.0
 offset_bottom = 832.0
 grow_vertical = 2
 size_flags_horizontal = 0
+theme = SubResource("Theme_fcgdd")
 theme_override_font_sizes/font_size = 50
 text = "QUIT"
 
@@ -208,10 +332,10 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -792.0
+offset_left = -776.0
 offset_top = -240.0
-offset_right = -128.0
-offset_bottom = 200.0
+offset_right = -192.0
+offset_bottom = 324.0
 grow_horizontal = 0
 grow_vertical = 2
 theme_override_font_sizes/font_size = 40
@@ -233,9 +357,36 @@ position = Vector2(544, 784)
 scale = Vector2(2.7, 2.5)
 texture = ExtResource("6_hi1x0")
 
-[node name="2" type="Sprite2D" parent="."]
-position = Vector2(1176, 640)
-texture = ExtResource("7_unwng")
+[node name="TextEdit" type="TextEdit" parent="."]
+offset_left = 528.0
+offset_top = 100.0
+offset_right = 1888.0
+offset_bottom = 348.0
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 200
+text = "TÄHTISUMU"
+
+[node name="menuportal1" type="AnimatedSprite2D" parent="."]
+position = Vector2(640, 1184)
+scale = Vector2(3.857, 4.5)
+sprite_frames = SubResource("SpriteFrames_4rg55")
+autoplay = "default"
+
+[node name="menuportal2" type="AnimatedSprite2D" parent="."]
+position = Vector2(1736, 1184)
+scale = Vector2(4.5, 4.5)
+sprite_frames = SubResource("SpriteFrames_c2exj")
+autoplay = "default"
+
+[node name="TextEdit2" type="TextEdit" parent="."]
+offset_left = 832.0
+offset_top = 1096.0
+offset_right = 1544.0
+offset_bottom = 1232.0
+theme_override_font_sizes/font_size = 40
+text = "PORTALS CAN BE USED TO 
+MOVE ACROSS THE SPACE"
 
 [connection signal="pressed" from="NewGame1" to="." method="_on_new_game_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

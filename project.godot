@@ -25,6 +25,7 @@ window/size/window_width_override=1600
 window/size/window_height_override=1000
 window/stretch/mode="viewport"
 window/stretch/aspect="expand"
+mouse_cursor/custom_image="res://assets/grafiikka/35.png"
 
 [global_group]
 

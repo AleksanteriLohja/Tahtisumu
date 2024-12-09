@@ -1,11 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bhny4m75t3873"]
+[gd_scene load_steps=21 format=3 uid="uid://bhny4m75t3873"]
 
 [ext_resource type="Texture2D" uid="uid://c8nuoahfrc1b3" path="res://assets/grafiikka/green_32x16.png" id="1_nfao4"]
 [ext_resource type="Script" path="res://scenes/enemy_2.gd" id="1_ykvv4"]
 [ext_resource type="AudioStream" uid="uid://dc101di0pnqxk" path="res://assets/äänet/distorted-impact-explosion-185554.mp3" id="3_qba5p"]
 [ext_resource type="AudioStream" uid="uid://dee7a2qubh0ha" path="res://assets/äänet/game-over-arcade-6435.mp3" id="4_myper"]
-[ext_resource type="AudioStream" uid="uid://ccs7ps4ka286s" path="res://assets/äänet/enemy-encounter-225560.mp3" id="5_wh382"]
+[ext_resource type="AudioStream" uid="uid://c1to7355ur81n" path="res://assets/äänet/eelctric.mp3" id="5_wbtkb"]
 [ext_resource type="AudioStream" uid="uid://cgm4k102mn88l" path="res://assets/äänet/8-bit-explosion-95847.mp3" id="6_qerd4"]
+[ext_resource type="Texture2D" uid="uid://bw50sbiowk3vl" path="res://assets/grafiikka/Effect and Bullet 16x16/Fire Effect and Bullet 16x16.png" id="7_rin86"]
+[ext_resource type="Texture2D" uid="uid://cx6hfr1y2i08t" path="res://assets/grafiikka/bullets/All_Fire_Bullet_Pixel_16x16_05.png" id="8_cunpn"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_uvjf2"]
 animations = [{
@@ -27,10 +29,78 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bwdnd"]
-radius = 40.0125
+radius = 60.0333
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sn7ql"]
-size = Vector2(164, 89)
+size = Vector2(188, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mj42"]
+atlas = ExtResource("7_rin86")
+region = Rect2(160, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_posr4"]
+atlas = ExtResource("7_rin86")
+region = Rect2(176, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ker30"]
+atlas = ExtResource("7_rin86")
+region = Rect2(192, 96, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b6d2c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mj42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_posr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ker30")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l6q2o"]
+atlas = ExtResource("8_cunpn")
+region = Rect2(256, 240, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hj1j0"]
+atlas = ExtResource("8_cunpn")
+region = Rect2(288, 240, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0t5o"]
+atlas = ExtResource("8_cunpn")
+region = Rect2(320, 240, 32, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hifo"]
+atlas = ExtResource("8_cunpn")
+region = Rect2(352, 240, 32, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a1ohx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l6q2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hj1j0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s0t5o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hifo")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
 
 [node name="Enemy2" type="CharacterBody2D"]
 collision_layer = 2
@@ -38,10 +108,11 @@ collision_mask = 3
 script = ExtResource("1_ykvv4")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(6, 6)
+scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_uvjf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-10, 3)
 shape = SubResource("CircleShape2D_bwdnd")
 
@@ -50,10 +121,11 @@ collision_layer = 2
 collision_mask = 267
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-5, 2.5)
+visible = false
+position = Vector2(-7, 4)
 shape = SubResource("RectangleShape2D_sn7ql")
 
-[node name="EnemyTuho" type="AudioStreamPlayer2D" parent="."]
+[node name="EnemyTuho" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_qba5p")
 volume_db = 1.131
 pitch_scale = 1.51
@@ -62,7 +134,7 @@ pitch_scale = 1.51
 stream = ExtResource("4_myper")
 
 [node name="EnemySound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_wh382")
+stream = ExtResource("5_wbtkb")
 volume_db = -1.575
 autoplay = true
 max_distance = 800.0
@@ -71,5 +143,19 @@ parameters/looping = true
 [node name="BulletHit" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_qerd4")
 volume_db = -6.029
+
+[node name="EnemyHitAnimation" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -17)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_b6d2c")
+frame = 3
+frame_progress = 1.0
+
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(71, 4)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_a1ohx")
+autoplay = "default"
+frame_progress = 0.280465
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

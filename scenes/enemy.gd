@@ -21,8 +21,8 @@ func _ready():
 	randomize_speed()
 	
 func randomize_speed():
-	var min_speed = 350
-	var max_speed = 550
+	var min_speed = 500
+	var max_speed = 600
 	speed = randi_range(min_speed, max_speed)	
 	
 	
@@ -40,6 +40,7 @@ func _physics_process(_delta):
 func die():
 	alive = false
 	$EnemySound.stop()
+	$EnemyEffect.visible = false
 	audio_tuho.play()
 	animated_sprite.play("tuho")
 	#$EnemyDeathTimer.start() #tämä määrittää kuoleman viiveen jotta animaatio ehtii toistua

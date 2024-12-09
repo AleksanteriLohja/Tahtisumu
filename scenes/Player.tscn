@@ -509,17 +509,17 @@ limit_right = 8500
 limit_bottom = 5700
 
 [node name="MoottoriLiike" type="AnimatedSprite2D" parent="."]
-position = Vector2(-67, -34)
+position = Vector2(-74, -34)
 rotation = -1.5708
-scale = Vector2(1.66797, 1.50332)
+scale = Vector2(2.2, 2.3)
 sprite_frames = SubResource("SpriteFrames_qg6om")
 animation = &"MoottoriLiike"
 autoplay = "MoottoriLiike"
 
 [node name="MoottoriLiike2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-67, 36)
+position = Vector2(-74, 35)
 rotation = -1.5708
-scale = Vector2(1.66797, 1.50332)
+scale = Vector2(2.2, 2.3)
 sprite_frames = SubResource("SpriteFrames_qg6om")
 animation = &"MoottoriLiike"
 autoplay = "MoottoriLiike"
@@ -534,7 +534,7 @@ autoplay = "MoottoriIdle"
 
 [node name="AlusMoottoriEteen" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_3mb7c")
-volume_db = -10.755
+volume_db = 10.0
 
 [node name="AlusMoottoriTaakse" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_3mb7c")
@@ -580,7 +580,7 @@ shape = SubResource("CapsuleShape2D_dmiqx")
 
 [node name="gun_boost" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_tsg1v")
-volume_db = -19.013
+volume_db = -14.491
 parameters/looping = true
 
 [node name="Shield" type="Area2D" parent="." groups=["player_shield"]]

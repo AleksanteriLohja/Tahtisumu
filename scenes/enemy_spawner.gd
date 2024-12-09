@@ -22,7 +22,7 @@ func _on_timer_timeout() -> void:
 		var spawn = spawn_points[randi() % spawn_points.size()]
 	#spawn enemy
 		var enemy
-		if randi() % 100 < 20: #spawn chance for enemy2
+		if randi() % 100 < 10: #spawn chance for enemy2
 			enemy = enemy_scene2.instantiate()
 		else:
 			enemy = enemy_scene.instantiate()

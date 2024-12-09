@@ -22,8 +22,8 @@ func _ready():
 	randomize_speed()
 	
 func randomize_speed():
-	var min_speed = 350
-	var max_speed = 550
+	var min_speed = 400
+	var max_speed = 450
 	speed = randi_range(min_speed, max_speed)	
 	
 	
@@ -45,6 +45,7 @@ func _physics_process(_delta):
 func die():
 	alive = false
 	$EnemySound.stop()
+	$AnimatedSprite2D2.visible = false
 	audio_tuho.play()
 	animated_sprite.play("tuho")
 	#$EnemyDeathTimer.start() #tämä määrittää kuoleman viiveen jotta animaatio ehtii toistua
@@ -82,5 +83,6 @@ func _on_area_2d_body_entered(_body):
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("bullet"):
 		$BulletHit.play()
+		$EnemyHitAnimation.play()
 		health -= 1
 		print(health)

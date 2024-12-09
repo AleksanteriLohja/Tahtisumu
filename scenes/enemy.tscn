@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://clb12rylqmee2"]
+[gd_scene load_steps=15 format=3 uid="uid://clb12rylqmee2"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_bh3bf"]
 [ext_resource type="Texture2D" uid="uid://b55t6hh5sngu3" path="res://assets/grafiikka/yellow_16x16.png" id="2_wmyb2"]
 [ext_resource type="AudioStream" uid="uid://ccrp5wnd34rqg" path="res://assets/äänet/lo-fi-explosion-fx_F_minor.wav" id="3_cftf7"]
 [ext_resource type="AudioStream" uid="uid://ccs7ps4ka286s" path="res://assets/äänet/enemy-encounter-225560.mp3" id="5_hekpq"]
 [ext_resource type="AudioStream" uid="uid://dee7a2qubh0ha" path="res://assets/äänet/game-over-arcade-6435.mp3" id="5_x5gbo"]
+[ext_resource type="Texture2D" uid="uid://b3n3t3b5e8nfd" path="res://assets/grafiikka/Effect and Bullet 16x16/Green Effect and Bullet 16x16.png" id="6_klhu5"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_athg4"]
 animations = [{
@@ -31,6 +32,42 @@ radius = 30.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j7dhl"]
 size = Vector2(75, 66)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_ehwkb"]
+atlas = ExtResource("6_klhu5")
+region = Rect2(224, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt7am"]
+atlas = ExtResource("6_klhu5")
+region = Rect2(240, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrpsw"]
+atlas = ExtResource("6_klhu5")
+region = Rect2(256, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fmoqm"]
+atlas = ExtResource("6_klhu5")
+region = Rect2(272, 32, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xiitg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehwkb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt7am")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vrpsw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fmoqm")
+}],
+"loop": true,
+"name": &"liike",
+"speed": 5.0
+}]
+
 [node name="Enemy" type="CharacterBody2D"]
 position = Vector2(-3, -2)
 collision_layer = 2
@@ -49,7 +86,7 @@ autoplay = "idle"
 position = Vector2(30, 19)
 shape = SubResource("CircleShape2D_x6x1q")
 
-[node name="EnemyTuho" type="AudioStreamPlayer2D" parent="."]
+[node name="EnemyTuho" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_cftf7")
 volume_db = -11.475
 pitch_scale = 1.51
@@ -70,8 +107,17 @@ stream = ExtResource("5_x5gbo")
 stream = ExtResource("5_hekpq")
 volume_db = -1.575
 autoplay = true
-max_distance = 800.0
+max_distance = 700.0
 parameters/looping = true
+
+[node name="EnemyEffect" type="AnimatedSprite2D" parent="."]
+position = Vector2(-18.3123, 19.2806)
+rotation = -1.5708
+scale = Vector2(1.47423, 3.01824)
+sprite_frames = SubResource("SpriteFrames_xiitg")
+animation = &"liike"
+autoplay = "liike"
+frame_progress = 0.392688
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
