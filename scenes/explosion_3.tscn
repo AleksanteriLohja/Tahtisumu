@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://d0chd60y05ydm"]
+
+[ext_resource type="Script" path="res://scenes/explosion.gd" id="1_rytxs"]
+
+[sub_resource type="Curve" id="Curve_chc4t"]
+_data = [Vector2(0.184549, 1), 0.0, 0.0, 0, 0, Vector2(0.982833, 0.208791), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="explosion3" type="CPUParticles2D"]
+emitting = false
+amount = 60
+lifetime = 3.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 86.51
+initial_velocity_max = 241.01
+scale_amount_min = 6.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_chc4t")
+color = Color(0.376263, 0.900778, 0.91627, 1)
+script = ExtResource("1_rytxs")

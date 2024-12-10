@@ -262,8 +262,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dmiqx"]
-radius = 37.0
-height = 100.0
+radius = 42.0
+height = 126.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7678g"]
 radius = 100.18
@@ -496,7 +496,7 @@ script = ExtResource("1_bsu2v")
 texture_filter = 1
 position = Vector2(-2, 0.499999)
 rotation = 3.14159
-scale = Vector2(3.559, 3.5)
+scale = Vector2(3.8, 3.737)
 sprite_frames = SubResource("SpriteFrames_oc55o")
 animation = &"idle"
 autoplay = "idle"
@@ -509,7 +509,7 @@ limit_right = 8500
 limit_bottom = 5700
 
 [node name="MoottoriLiike" type="AnimatedSprite2D" parent="."]
-position = Vector2(-74, -34)
+position = Vector2(-77, -38)
 rotation = -1.5708
 scale = Vector2(2.2, 2.3)
 sprite_frames = SubResource("SpriteFrames_qg6om")
@@ -517,7 +517,7 @@ animation = &"MoottoriLiike"
 autoplay = "MoottoriLiike"
 
 [node name="MoottoriLiike2" type="AnimatedSprite2D" parent="."]
-position = Vector2(-74, 35)
+position = Vector2(-77, 37)
 rotation = -1.5708
 scale = Vector2(2.2, 2.3)
 sprite_frames = SubResource("SpriteFrames_qg6om")

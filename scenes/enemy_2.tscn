@@ -112,7 +112,6 @@ scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_uvjf2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(-10, 3)
 shape = SubResource("CircleShape2D_bwdnd")
 
@@ -121,7 +120,6 @@ collision_layer = 2
 collision_mask = 267
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-visible = false
 position = Vector2(-7, 4)
 shape = SubResource("RectangleShape2D_sn7ql")
 
@@ -159,3 +157,4 @@ autoplay = "default"
 frame_progress = 0.280465
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

@@ -71,13 +71,14 @@ func disable_collision():
 #func _on_enemy_death_timer_timeout() -> void: #tämä poistaa vihollisen
 	#queue_free()
 
-#toistetaan signaali kun vihollinen osuu pelaajaan
-func _on_area_2d_body_entered(_body):
-	$EnemyHit.play()
-	$EnemyTuho.play()
-	hit_player.emit()
-	for enemy in get_tree().get_nodes_in_group("enemies"):
-		enemy.call_deferred("disable_collision")
+#toistetaan signaali kun vihollinen osuu pelaajaa
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.name == "player":
+		$EnemyHit.play()
+		$EnemyTuho.play()
+		hit_player.emit()
+		for enemy in get_tree().get_nodes_in_group("enemies"):
+			enemy.call_deferred("disable_collision")
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://dwaxaxjsx85yd"
-path="res://.godot/imported/aluslyhyt.mp3-7213eeadd1b1911eefff0d36bb71d1c1.mp3str"
+path="res://.godot/imported/aluslyhyt.mp3-640bd6dc81828991f076490034a3f4d2.mp3str"
 
 [deps]
 
-source_file="res://aluslyhyt.mp3"
-dest_files=["res://.godot/imported/aluslyhyt.mp3-7213eeadd1b1911eefff0d36bb71d1c1.mp3str"]
+source_file="res://assets/äänet/aluslyhyt.mp3"
+dest_files=["res://.godot/imported/aluslyhyt.mp3-640bd6dc81828991f076490034a3f4d2.mp3str"]
 
 [params]
 

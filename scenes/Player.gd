@@ -23,7 +23,10 @@ var dash_timer: float = 0.0
 var can_dash: bool = true
 var dash_cooldown: float = 7.0
 var dash_cooldown_timer: float = 0.0  # Track remaining cooldown time
+var explosion_scene := preload("res://scenes/explosion_3.tscn")#pixeliräjähdys
+var explosion_instantiated = false
 
+@onready var main = get_node("/root/main") #tuodaan main node jotta voidaan viitata siihen
 @onready var Liike_sprite: AnimatedSprite2D = $MoottoriLiike #moottorin tulianimaatio
 @onready var Liike_sprite2: AnimatedSprite2D = $MoottoriLiike2 #moottorin tulianimaatio
 @onready var Idle_sprite: AnimatedSprite2D = $MoottoriIdle #moottorin idelanimaatio
@@ -121,6 +124,16 @@ func _physics_process(delta):
 	# Player movement
 	get_input(delta)
 	move_and_slide()
+	
+	if $Alus.animation == "tuho" and not explosion_instantiated:
+		var explosion = explosion_scene.instantiate()
+		explosion.position = position
+		main.add_child(explosion)
+		explosion.process_mode = Node.PROCESS_MODE_ALWAYS
+		explosion_instantiated = true
+	
+	if $Alus.animation != "tuho":
+		explosion_instantiated = false	
 	
 	if is_dashing:
 		dash_timer -= delta
