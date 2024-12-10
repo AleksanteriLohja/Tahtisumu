@@ -6,7 +6,7 @@
 script = ExtResource("1_1pv3l")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.199
+wait_time = 0.6
 autostart = true
 
 [node name="Marker2D2" type="Marker2D" parent="."]

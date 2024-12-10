@@ -211,10 +211,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7yqqh")
+}, {
+"duration": 1.0,
+"texture": null
 }],
 "loop": false,
 "name": &"tuho",
-"speed": 10.0
+"speed": 15.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0dem"]
@@ -251,6 +254,14 @@ animations = [{
 "loop": true,
 "name": &"MoottoriLiike",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"tuho",
+"speed": 5.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x8gjf"]
@@ -498,7 +509,7 @@ position = Vector2(-2, 0.499999)
 rotation = 3.14159
 scale = Vector2(3.8, 3.737)
 sprite_frames = SubResource("SpriteFrames_oc55o")
-animation = &"idle"
+animation = &"tuho"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
