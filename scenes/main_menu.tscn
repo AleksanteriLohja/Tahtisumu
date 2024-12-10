@@ -374,16 +374,16 @@ RAPID FIRE
 HEALTH"
 
 [node name="Bullets" type="Sprite2D" parent="RichTextLabel2"]
-position = Vector2(552, 616)
+position = Vector2(592, 576)
 scale = Vector2(2.7, 2.7)
 texture = ExtResource("5_vpn4f")
 
 [node name="Health" type="Sprite2D" parent="RichTextLabel2"]
-position = Vector2(544, 784)
+position = Vector2(592, 744)
 scale = Vector2(2.7, 2.5)
 texture = ExtResource("6_hi1x0")
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="TextEdit" type="Label" parent="."]
 offset_left = 528.0
 offset_top = 100.0
 offset_right = 1888.0
