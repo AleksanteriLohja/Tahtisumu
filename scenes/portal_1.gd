@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var player = get_node("/root/main/player")
-@onready var player_collision = player.get_node("CollisionShape2D")
+@onready var player_collision = player.get_node("/root/main/player/CollisionShape2D")
 @onready var teleport_sound = $"../AudioStreamPlayer2D"
 
 

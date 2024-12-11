@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://bhny4m75t3873"]
 
-[ext_resource type="Texture2D" uid="uid://c8nuoahfrc1b3" path="res://assets/grafiikka/green_32x16.png" id="1_nfao4"]
+[ext_resource type="Texture2D" path="res://assets/grafiikka/green_32x16.png" id="1_nfao4"]
 [ext_resource type="Script" path="res://scenes/enemy_2.gd" id="1_ykvv4"]
 [ext_resource type="AudioStream" uid="uid://dc101di0pnqxk" path="res://assets/äänet/distorted-impact-explosion-185554.mp3" id="3_qba5p"]
 [ext_resource type="AudioStream" uid="uid://dee7a2qubh0ha" path="res://assets/äänet/game-over-arcade-6435.mp3" id="4_myper"]

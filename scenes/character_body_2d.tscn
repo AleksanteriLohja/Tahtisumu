@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://v2gp4f26pspm"]
+[gd_scene load_steps=4 format=3 uid="uid://6r83ng3x3c0b"]
 
 [ext_resource type="Texture2D" uid="uid://c5glppls1su8u" path="res://assets/grafiikka/items/icon.svg" id="1_cts4l"]
-[ext_resource type="Texture2D" uid="uid://dknfmu7cfcb4r" path="res://assets/grafiikka/Grass.png" id="2_u4pq2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oc55o"]
 animations = [{
@@ -10,7 +9,7 @@ animations = [{
 "texture": ExtResource("1_cts4l")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_u4pq2")
+"texture": null
 }],
 "loop": true,
 "name": &"default",
