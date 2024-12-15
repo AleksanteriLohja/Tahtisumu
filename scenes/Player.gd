@@ -41,18 +41,19 @@ var explosion_instantiated = false
 
 func _ready():#kutsuu reset funktion jossa on kaikki tarvittava pelin aloitukseen
 	reset()
+	animated_sprite.play("idle")
 	DashCDProgressBar.max_value = dash_cooldown
 	DashCDProgressBar.value = dash_cooldown
+	$ShotTimer.wait_time = NORMAL_SHOT
+	Shield.visible = false  # Ensure shield is initially hidden
+	dash_cooldown_timer = 0.0 # Reset cooldown timer
 
 func reset():
 	animated_sprite.play("idle")
-	$gun_boost.stop()
 	max_speed = 700
 	can_shoot = true
 	can_dash = true
-	position = Vector2(4200, 2700) #pelaajan aloitus paikka, koordinaatit x,y
-	$ShotTimer.wait_time = NORMAL_SHOT	
-	Shield.visible = false  # Ensure shield is initially hidden
+	#position = Vector2(4200, 2700) #pelaajan aloitus paikka, koordinaatit x,y
 	DashCDProgressBar.value = dash_cooldown
 	dash_cooldown_timer = 0.0 # Reset cooldown timer
 	

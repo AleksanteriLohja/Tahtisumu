@@ -69,11 +69,10 @@ func disable_collision():
 #toistetaan signaali kun vihollinen osuu pelaajaan
 func _on_area_2d_body_entered(body):
 	if body.name == "player":
-		$EnemyHit.play()
-		$EnemyTuho.play()
-		hit_player.emit()
-		for enemy in get_tree().get_nodes_in_group("enemies"):
-			enemy.call_deferred("disable_collision")
+		var animation_player = body.get_node("Alus/flash_animation")
+		if animation_player and not animation_player.is_playing():
+			$EnemyHit.play()
+			hit_player.emit()
 
 
 

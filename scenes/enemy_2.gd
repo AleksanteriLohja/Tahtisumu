@@ -72,13 +72,12 @@ func disable_collision():
 	#queue_free()
 
 #toistetaan signaali kun vihollinen osuu pelaajaa
-func _on_area_2d_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(body):
 	if body.name == "player":
-		$EnemyHit.play()
-		$EnemyTuho.play()
-		hit_player.emit()
-		for enemy in get_tree().get_nodes_in_group("enemies"):
-			enemy.call_deferred("disable_collision")
+		var animation_player = body.get_node("Alus/flash_animation")
+		if animation_player and not animation_player.is_playing():
+			$EnemyHit.play()
+			hit_player.emit()
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:

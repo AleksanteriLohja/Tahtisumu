@@ -5,9 +5,11 @@ const DIFF_MULTIPLIER : float = 1.3 #kerroin sille kuinka nopeasti pelistä tule
 var max_enemies: int
 var lives : int
 var timer_started = false
+var game_over = false
 
 @onready var music_player = $Taustamusiikki
 @onready var destroy_animation = get_node("player/Alus")
+@onready var flash_animation = get_node("player/Alus/flash_animation")
 @onready var collision = get_node("player/CollisionShape2D")
 var pitch_scale = 1.0
 # Called when the node enters the scene tree for the first time.
@@ -16,18 +18,18 @@ func _ready() -> void:
 	$GameOver/NewGame.pressed.connect(new_game)
 	
 func new_game():
+	game_over = false
 	wave = 1
-	lives = 2
+	lives = 3
 	difficulty = 8
 	max_enemies = 8
 	reset()
 	
 func reset():
+	game_over = false
 	$player.reset()
 	max_enemies = int(difficulty)
 	get_tree().call_group("enemies", "queue_free")
-	get_tree().call_group("bullet", "queue_free")
-	get_tree().call_group("items", "queue_free")
 	$Hud/LivesLabel.text = "X "+ str(lives)
 	$Hud/WaveLabel.text = "WAVE:"+ str(wave)
 	$Hud/EnemiesLabel.text = "ENEMIES:"+ str(max_enemies)
@@ -58,21 +60,30 @@ func _process(_delta):
 		
 #vähentaa pelaajan hp määrää kun vihollinen osuu pelaajaan
 func _on_enemy_spawner_hit_p() -> void:
-	lives -= 1
-	collision.set_deferred("set_disabled", true)
-	$Hud/LivesLabel.text = "X " + str(lives)
+	if game_over:
+		return
+	else:
+		flash_animation.play("flash")
+		lives -= 1
+		$Hud/LivesLabel.text = "X " + str(lives)
 	if lives <= 0:
+		game_over = true
+		collision.set_deferred("set_disabled", true)
+		flash_animation.stop()
 		destroy_animation.play("tuho")
 		$GameOverSound.play()
 		await get_tree().create_timer(1.2).timeout
 		$GameOver/WavesSurvivedLabel.text = "WAVES SURVIVED: " + str(wave - 1)
 		get_tree().paused = true
 		$GameOver.show()
-	else:
-		destroy_animation.play("tuho")
-		await get_tree().create_timer(1).timeout
-		get_tree().paused = true
-		$WaveOverTimer.start()	
+	else:	
+		var timer = get_tree().create_timer(3.0)
+		await timer.timeout
+		flash_animation.stop()
+		#destroy_animation.play("tuho")
+		#await get_tree().create_timer(1).timeout
+		#get_tree().paused = true
+		#$WaveOverTimer.start()	
 		
 	
 func _on_wave_over_timer_timeout() -> void:

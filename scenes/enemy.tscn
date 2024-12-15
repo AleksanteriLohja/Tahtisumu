@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://clb12rylqmee2"]
 
 [ext_resource type="Script" path="res://scenes/enemy.gd" id="1_bh3bf"]
-[ext_resource type="Texture2D" path="res://assets/grafiikka/yellow_16x16.png" id="2_wmyb2"]
+[ext_resource type="Texture2D" uid="uid://b55t6hh5sngu3" path="res://assets/grafiikka/yellow_16x16.png" id="2_wmyb2"]
 [ext_resource type="AudioStream" uid="uid://ccrp5wnd34rqg" path="res://assets/äänet/lo-fi-explosion-fx_F_minor.wav" id="3_cftf7"]
 [ext_resource type="AudioStream" uid="uid://ccs7ps4ka286s" path="res://assets/äänet/enemy-encounter-225560.mp3" id="5_hekpq"]
 [ext_resource type="AudioStream" uid="uid://dee7a2qubh0ha" path="res://assets/äänet/game-over-arcade-6435.mp3" id="5_x5gbo"]
